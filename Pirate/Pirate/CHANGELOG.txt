@@ -1,0 +1,96 @@
+#################################################
+Changelog for "Pirate" project
+
+
+NO! CORRECTION**************
+To merge into Dropbox, do NOT copy files into the dropbox project. The dropbox needs to remain a flawless, working copy of the project. If you want to merge into dbox, copy the dropbox project into a temporary local location on your machine, then copy the lines from your changes into THAT local project, then only after ensuring that it works can you then put it in the dropbox folder. To put it in the dropbox folder, DELETE what is currently in the dropbox (ensure no one else has edited it since you started your merge) and paste in the local copy that has your merged changes in it.
+
+Best practice: 
+	-send out an "I'm merging" email so no one else will attempt a merge at the same time as you.
+	-Don't run Pirate from the Dropbox solution. It will create the ipch directory as well as the sdf file, taking up unnecessary dropbox space.
+
+
+Example log entry:
+2013-10-21 10:87 PM - James - added Roiburt
+	Changed main.cpp, Area.cpp, Area.h
+#################################################
+
+2013-10-28 8:00 PM - Nick
+	Menus can have more than 10 choices
+		123456789abcdefghijklmnopqrstuvwxyz
+
+
+2013-10-28 6:30 PM - James
+	Game saves after save-worthy inputs
+	refactored getCarryableObjectByID/getCarryableObjectByName -> getCarryableObject(*)
+	fixed a randoms bug
+
+2013-10-28 4:00 PM - James
+	Added debugMode (activatable from in-game) : type scdebugmode to turn it on, "scdebugmode off" to turn it off
+		This is useful because now in the code we can wrap debugging outputs in (if player.isdebugMode()) and it
+		will only display if, when in game, the player first types scdebugmode
+	Added fish
+	Gameplay changes and balances
+	Refactored (Changed getVesselByName and getVesselById to one overloaded "getVessel(*)" function. Same for getArea)
+	"go fish" is now an accepted command from the dock
+	
+	
+2013-10-26 10:30 AM - Nick
+	Added a basic randoms engine
+		make random event functions in randomEvents.cpp, use pointers to those to create RandomEvents in globals.cpp
+	Creating a new player now moves their name to the top of the list
+	(note: "#pragma once;" at the beginning of a file makes it only be included once) 
+
+2013-10-25 7:00 PM - Nick
+	Type "areas" to see the areas you have previously been to.
+		this is stored in the player class as a set of integers (area id)
+		added corresponding functions for printing the list of areas, discovering an area 
+		compatible with save / load
+
+2013-10-25 2:50 PM - Nick
+	Added WisePrint - replacement for cout that doesn't cut off words between lines
+		replaced almost every instance of cout to wout
+		use wout << "ghjk" instead of cout << "ghjk" to output things now 
+	Fixed a spelling error
+
+2013-10-23 6:00 PM - James
+	Changed a bunch of random things about gameplay:
+		Commands now accepted: "bait", "gold", "level", "lvl", "examine *fish*"
+	Added "useful commands" to the help function (Access with "help")
+	Corrected a vessel capacity bug
+	Corrected a bug that happened when you deleted multiple games
+	Vessels are now saved, any profile created before this functionality needed to be destroyed. So I destroyed them.
+	Refactored "go fish()" function
+	
+
+2013-10-23 4:30 PM - Nick
+	re-did fishing wait delay (Player::GetWaitTime())
+		It's based on how much experience you have over the requirement for that area
+	you can now travel to any area from any area 
+
+2013-10-23 1:00 AM - James - 
+	Removed: (functions are no longer being used)
+	Player::wait()
+	Player::Getminimumtime()
+	Player::GetMaximumTime()
+
+	Changes:
+	Corrected the number of dashes in the inventory so it looks good
+	Added a function to count the number of fish in the player's inventory
+	Deleted random comments from player.h
+	Buyfish function now checks for non-fish items and tells the player who to talk to about their non-fish items
+	fixed getcarriedfishnum so it doesn't inf. loop
+	Changed level->lvl in waitTime() to fix a bug
+	Changed map look
+	Added exceeded vessel capacity messages
+	bait now only costs 1
+	rebalanced vessel capacities
+	can now say just the name of the location to travel to the location
+	can now examine objects 
+	Made a bunch of random other gameplay changes
+
+	
+	
+2013-10-21 10:00 PM - Baseline code as discussed in meeting
+
+
