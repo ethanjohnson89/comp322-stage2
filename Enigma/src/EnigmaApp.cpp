@@ -28,7 +28,7 @@ void EnigmaApp::update()
 void EnigmaApp::draw()
 {
 	// clear out the window with black
-	gl::clear( Color( 0, 0, 0 ) ); 
+	gl::clear( Color( 0, 20, 0 ) ); 
 }
 
 CINDER_APP_NATIVE( EnigmaApp, RendererGl )
