@@ -1,13 +1,7 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
 
-/************  Exceptions  **************
-
-//invalidIndexException - thrown if index is accessed in a manager container that does not have an object at that index.
-
-*****************************************/
-
-
+#include "ExceptionClasses.h"
 
 class GameManager {
 
