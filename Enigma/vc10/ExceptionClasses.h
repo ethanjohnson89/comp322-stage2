@@ -1,4 +1,4 @@
-#ifdef __EXCEPTIONCLASSES_H
+#ifndef __EXCEPTIONCLASSES_H
 #define __EXCEPTIONCLASSES_H
 
 #include <exception>
