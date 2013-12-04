@@ -16,6 +16,7 @@ private:
 	Worldmap worldmap;
 	bool mapActive;
 	bool eventAreaClicked(MouseEvent event);
+	bool menuButtonAreaClicked(MouseEvent event);
 	EnigmaArea testArea, testArea2;
 	vector<MenuButton> menuButtons;
 	MenuButton button1, button2, button3, button4;
@@ -46,6 +47,10 @@ void EnigmaApp::setup()
 	button2.setImage(gl::Texture(loadImage(loadAsset("button2.jpg"))));
 	button3.setImage(gl::Texture(loadImage(loadAsset("button3.jpg"))));
 	button4.setImage(gl::Texture(loadImage(loadAsset("button4.jpg"))));
+	button1.setCommandString("button1 clicked");
+	button2.setCommandString("button2 clicked");
+	button3.setCommandString("button3 clicked");
+	button4.setCommandString("button4 clicked");
 	menuButtons.push_back(button1);
 	menuButtons.push_back(button2);
 	menuButtons.push_back(button3);
@@ -75,6 +80,21 @@ void EnigmaApp::mouseDown( MouseEvent event )
 			}
 		}
 	}
+	else if (menuButtonAreaClicked(event))
+	{
+		for (int index = 0; index < menuButtons.size(); index++)
+		{
+			if (event.getX() > MENUBUTTONS_X  && 
+			event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
+			event.getY() > MENUBUTTONS_Y + index * MENUBUTTONS_HEIGHT  && 
+			event.getY() < MENUBUTTONS_Y + (index+1) * MENUBUTTONS_HEIGHT)
+			{
+				//menuButtons[index].getFunction();
+				con.output(menuButtons[index].getCommandString());
+				break;
+			}
+		}
+	}
 }
 
 bool EnigmaApp::eventAreaClicked(MouseEvent event)
@@ -84,6 +104,15 @@ bool EnigmaApp::eventAreaClicked(MouseEvent event)
 		event.getX() < EVENT_WINDOW_X + EVENT_WINDOW_WIDTH &&	
 		event.getY() > EVENT_WINDOW_Y  && 
 		event.getY() < EVENT_WINDOW_Y + EVENT_WINDOW_HEIGHT;
+}
+
+bool EnigmaApp::menuButtonAreaClicked(MouseEvent event)
+{
+	return 
+		event.getX() > MENUBUTTONS_X  && 
+		event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
+		event.getY() > MENUBUTTONS_Y  && 
+		event.getY() < MENUBUTTONS_Y + MENUBUTTONS_HEIGHT;
 }
 
 void EnigmaApp::keyDown( KeyEvent event ) 
