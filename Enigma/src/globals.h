@@ -3,6 +3,10 @@
 #define _GLOBALS_H
 
 #include "cinder/gl/gl.h"
+#include<vector>
+using std::vector;
+#include<string>
+using std::string;
 
 using namespace ci;
 
@@ -29,11 +33,6 @@ namespace windowNS
 	static const int INVENTORY_Y = CONSOLE_Y;
 	static const int INVENTORY_WIDTH = WINDOW_WIDTH - INVENTORY_X - 5;
 	static const int INVENTORY_HEIGHT = WINDOW_HEIGHT - INVENTORY_Y - 5;
-
-	typedef string (*CommandFunction)(GameManager* gm, vector<string> args); //Function signature for Commanmd actions. Arguments to the command, 
-																		// as identified by the parser, are passed to the command in the vector args. 
-																		// The pointer to the GameManager allows action functions to interact with 
-																		// the game as desired by the client.
 }
 
 #endif
