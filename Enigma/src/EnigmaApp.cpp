@@ -112,7 +112,7 @@ bool EnigmaApp::menuButtonAreaClicked(MouseEvent event)
 		event.getX() > MENUBUTTONS_X  && 
 		event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
 		event.getY() > MENUBUTTONS_Y  && 
-		event.getY() < MENUBUTTONS_Y + MENUBUTTONS_HEIGHT;
+		event.getY() < MENUBUTTONS_Y + menuButtons.size() * MENUBUTTONS_HEIGHT;
 }
 
 void EnigmaApp::keyDown( KeyEvent event ) 
