@@ -33,6 +33,11 @@ namespace windowNS
 	static const int INVENTORY_Y = CONSOLE_Y;
 	static const int INVENTORY_WIDTH = WINDOW_WIDTH - INVENTORY_X - 5;
 	static const int INVENTORY_HEIGHT = WINDOW_HEIGHT - INVENTORY_Y - 5;
+
+	static const int DIVIDER_X = 5;
+	static const int DIVIDER_Y = EVENT_WINDOW_Y + EVENT_WINDOW_HEIGHT;
+	static const int DIVIDER_WIDTH = WINDOW_WIDTH - 10;
+	static const int DIVIDER_HEIGHT = 5;
 }
 
 #endif

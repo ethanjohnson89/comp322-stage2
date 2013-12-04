@@ -92,6 +92,7 @@ void EnigmaApp::draw()
 	gl::clear( Color( 0, 30, 0 ) );  
 	con.draw();
 	worldmap.draw();
+	gl::drawSolidRect(Rectf(windowNS::DIVIDER_X, windowNS::DIVIDER_Y, windowNS::DIVIDER_WIDTH + windowNS::DIVIDER_X, windowNS::DIVIDER_HEIGHT + windowNS::DIVIDER_Y));
 }
 
 CINDER_APP_NATIVE( EnigmaApp, RendererGl )
