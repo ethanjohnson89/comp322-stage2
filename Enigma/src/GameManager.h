@@ -5,7 +5,7 @@
 #include "globals.h"
 #include "EnigmaArea.h"
 #include "console.h"
-//#include "ExceptionClasses.h"
+#include "ExceptionClasses.h"
 
 class Command;
 #include "Command.h"

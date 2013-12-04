@@ -117,12 +117,12 @@
     <ClInclude Include="..\src\Command.h" />
     <ClInclude Include="..\src\console.h" />
     <ClInclude Include="..\src\EnigmaArea.h" />
+    <ClInclude Include="..\src\ExceptionClasses.h" />
     <ClInclude Include="..\src\globals.h" />
     <ClInclude Include="..\src\Inventory.h" />
     <ClInclude Include="..\src\Item.h" />
     <ClInclude Include="..\src\MenuButton.h" />
     <ClInclude Include="..\src\Worldmap.h" />
-    <ClInclude Include="ExceptionClasses.h" />
     <ClInclude Include="..\src\GameManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
