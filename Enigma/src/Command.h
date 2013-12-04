@@ -17,7 +17,8 @@ typedef string (*CommandFunction)(GameManager* gm, vector<string> args); //Funct
 
 class Command {
 public:	
-
+	Command(){}
+	Command(CommandFunction* fn, string name):associatedFunction(fn), key(name){}
 	void setAssociatedFunction(CommandFunction *fn) {associatedFunction = fn;}
 	CommandFunction* getAssociatedFunction() {return associatedFunction;}
 	string getKey() {return key;}

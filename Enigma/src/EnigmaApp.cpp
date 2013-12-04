@@ -20,6 +20,7 @@ private:
 	vector<MenuButton> menuButtons;
 	MenuButton button1, button2, button3, button4;
 public:
+	void outputDebugInfo(GameManager*, vector<string>);
 	void setup();
 	void prepareSettings(Settings *settings);
 	void mouseDown( MouseEvent event );	
@@ -51,6 +52,13 @@ void EnigmaApp::setup()
 	menuButtons.push_back(button4);
 	con.output("--- Welcome to the Enigma engine. ---");
 	con.output(" ");
+
+	//vector<string> args;
+	
+	//Command com(&outputDebugInfo(&gm, args), "Enigma::debug");
+	
+
+
 }
 
 void EnigmaApp::mouseDown( MouseEvent event )
@@ -107,6 +115,10 @@ void EnigmaApp::draw()
 	gl::drawSolidRect(Rectf(windowNS::DIVIDER_X, windowNS::DIVIDER_Y, windowNS::DIVIDER_WIDTH + windowNS::DIVIDER_X, windowNS::DIVIDER_HEIGHT + windowNS::DIVIDER_Y));
 	for (int i = 0; i < menuButtons.size(); i++)
 		menuButtons[i].draw(i);
+}
+
+void EnigmaApp::outputDebugInfo(GameManager* gm, vector<string> args) {
+	con.output("Debug info goes here.");
 }
 
 CINDER_APP_NATIVE( EnigmaApp, RendererGl )
