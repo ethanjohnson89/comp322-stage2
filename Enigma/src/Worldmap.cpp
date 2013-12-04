@@ -27,7 +27,7 @@ void Worldmap::draw()
 	//	gl::draw(background, windowNS::eventWindowBounds);
 
 	for (int i = 0; i < areas.size(); i++)
-		areas[i]->drawThumb();
+		areas[i]->drawThumbnail();
 }
 
 int Worldmap::mapClicked(int x, int y)
@@ -38,8 +38,8 @@ int Worldmap::mapClicked(int x, int y)
 
 	for (int i = 0; i < areas.size(); i++)
 	{
-		if (x > areas[i]->x && x < areas[i]->x + areaWidth && 
-			y > areas[i]->y && y < areas[i]->y + areaHeight)
+		if (x > areas[i]->getPosition().x && x < areas[i]->getPosition().x + areaWidth && 
+			y > areas[i]->getPosition().y && y < areas[i]->getPosition().y + areaHeight)
 		{
 			setCurrentArea(i);
 			return i;
