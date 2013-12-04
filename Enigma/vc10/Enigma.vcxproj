@@ -103,7 +103,6 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Command.cpp" />
     <ClCompile Include="..\src\console.cpp" />
     <ClCompile Include="..\src\EnigmaApp.cpp" />
     <ClCompile Include="..\src\GameManager.cpp" />

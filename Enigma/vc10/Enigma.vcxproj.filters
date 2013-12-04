@@ -27,9 +27,6 @@
     <ClCompile Include="..\src\console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Command.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
