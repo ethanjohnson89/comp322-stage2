@@ -13,15 +13,25 @@ private:
 	Console con;
 public:
 	void setup();
+	void prepareSettings(Settings *settings);
 	void mouseDown( MouseEvent event );	
 	void keyDown( KeyEvent event );
 	void update();
 	void draw();
 };
 
+void EnigmaApp::prepareSettings( Settings *settings ){
+    settings->setWindowSize( 1000, 700 );
+}
+
+
 void EnigmaApp::setup()
 {
 	con.setup();
+	con.setWidth(600);
+	con.setHeight(200);
+	con.setX(0);
+	con.setY(505);
 }
 
 void EnigmaApp::mouseDown( MouseEvent event )

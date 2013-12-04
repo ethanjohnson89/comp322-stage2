@@ -3,25 +3,23 @@
 
 Console::Console()
 {
-	width = 600;
-	height = 500;
+	width = 400;
+	height = 400;
 	inputLinePrefix = ">";
 	inputLine = inputLinePrefix;
 	lines.push_back(" ");
-	maxLines = 10;
 	font = "Consolas";
-	fontSize = 28;
-	textColor = Color(0.7f, 1.0f, 0.7f);
-	backColor = ColorA(0.15, 0.15, 0.15, 1);
+	fontSize = 24;
+	textColor = ColorA(0.6f, 1.0f, 0.6f, 1);
+	backColor = ColorA(0.35, 0.35, 0.35, 1);
+	maxLines = 0;
 }
 
 void Console::setup()
 {
 	mFont = Font( font, fontSize );
-	mSize = Vec2f( width, height );
 
-	for (int i = 0; i < maxLines; i++)
-		lines.push_back(" ");
+	adjustMaxLines();
 
 	render();
 }
@@ -37,7 +35,7 @@ void Console::render()
 	}
 	txt += inputLine;
 
-	TextBox tbox = TextBox().alignment( TextBox::LEFT ).font( mFont ).size( Vec2i( mSize.x, TextBox::GROW ) ).text( txt );
+	TextBox tbox = TextBox().alignment( TextBox::LEFT ).font( mFont ).size( Vec2i( width, height ) ).text( txt );
 	tbox.setColor(textColor);
 	tbox.setBackgroundColor(backColor);
 	Vec2i sz = tbox.measure();
@@ -50,17 +48,18 @@ void Console::update()
 
 void Console::draw()
 {
-
 	gl::setMatricesWindow( getWindowSize() );
 	gl::enableAlphaBlending();
 	gl::clear( Color( 0, 0, 0 ) );
-	
+	Vec2f pos(x, y);
+
 	if( mTextTexture )
-		gl::draw( mTextTexture );
+		gl::draw( mTextTexture, pos );
 }
 
 void Console::sendChar(char a)
 {
+	if ((inputLine.size() + 1) * ((fontSize) / 2.25) < width)
 	inputLine += a;
 	render();
 }
@@ -97,4 +96,26 @@ void Console::backspace()
 	if (inputLine.size() > inputLinePrefix.size())
 		inputLine.erase(inputLine.size() - 1);
 	render();
+}
+
+void Console::adjustMaxLines()
+{
+	int oldMax = maxLines;
+	maxLines = height / (fontSize - 3);
+	maxLines--;
+	maxLines--;
+
+	lines.clear();
+	for (int i = 0; i < maxLines + 1; i++)
+		lines.push_back(" ");
+
+	render();
+}
+
+void Console::setFontSize(int a)
+{
+	fontSize = a;
+	mFont = Font( font, fontSize ); 
+	inputLine = inputLinePrefix; 
+	adjustMaxLines();
 }
