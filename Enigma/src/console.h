@@ -1,3 +1,5 @@
+#ifndef __CONSOLE_H
+#define __CONSOLE_H
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
@@ -55,3 +57,5 @@ public:
 	void setBackColor(ColorA c){backColor = c;}
 	
 };
+
+#endif

@@ -1,6 +1,7 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "console.h"
+#include "GameManager.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -8,6 +9,7 @@ using namespace std;
 
 class EnigmaApp : public AppNative {
 private:
+	GameManager gm;
 	Console con;
 public:
 	void setup();
