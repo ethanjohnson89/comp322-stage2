@@ -32,17 +32,20 @@ private:
 	Color textColor;
 	Color backColor;
 
+	// These functions will be called by the friend class EnigmaApp
+	friend class EnigmaApp;
+	void sendChar(char a);
+	string sendLine();
+	void output(string s); // only accessible within Console and EnigmaApp, see the friend function below for other uses
+	void backspace();
+	friend void output(Console *cons, string s) { cons->output(s); } // friend function for use by any class that needs to print output to the console
+
 public:
 	Console();
 	void setup();
 	void update();
 	void draw();
 	void render();
-
-	void sendChar(char a); // make into private GameManager friend function
-	string sendLine();	   // make into private GameManager friend function
-	void output(string s); 
-	void backspace();
 
 	int getWidth(){return width;}
 	void setWidth(int a){width = a; adjustMaxLines();}
