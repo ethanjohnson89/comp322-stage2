@@ -1,10 +1,6 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
-#include "Worldmap.h"
-#include "console.h"
 #include "GameManager.h"
-#include "globals.h"
-#include "EnigmaArea.h"
 
 using namespace ci;
 using namespace ci::app;

@@ -2,6 +2,9 @@
 #define __GAMEMANAGER_H
 #include "Worldmap.h"
 #include "Inventory.h"
+#include "globals.h"
+#include "EnigmaArea.h"
+#include "console.h"
 //#include "ExceptionClasses.h"
 
 class Command;

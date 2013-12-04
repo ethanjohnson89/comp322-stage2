@@ -1,4 +1,4 @@
-#include "console.h";
+#include "console.h"
 
 
 Console::Console()
@@ -10,14 +10,14 @@ Console::Console()
 	lines.push_back(" ");
 	font = "Consolas";
 	fontSize = 24;
-	textColor = ColorA(0.6f, 1.0f, 0.6f, 1);
-	backColor = ColorA(0.35, 0.35, 0.35, 1);
+	textColor = ColorA(0.6f, 1.0f, 0.6f, 1.0f);
+	backColor = ColorA(0.35f, 0.35f, 0.35f, 1.0f);
 	maxLines = 0;
 }
 
 void Console::setup()
 {
-	mFont = Font( font, fontSize );
+	mFont = Font( font, static_cast<float>(fontSize) );
 	width = CONSOLE_WIDTH;
 	height = CONSOLE_HEIGHT;
 	x = CONSOLE_X;
@@ -31,7 +31,7 @@ void Console::render()
 {
 	string txt = "";
 
-	for (int i = 0; i < lines.size(); i++)
+	for (unsigned int i = 0; i < lines.size(); i++)
 	{
 		txt += lines[i];
 		txt += "\n";
@@ -54,7 +54,7 @@ void Console::draw()
 	gl::setMatricesWindow( getWindowSize() );
 	gl::enableAlphaBlending();
 	gl::clear( Color( 0, 0, 0 ) );
-	Vec2f pos(x, y);
+	Vec2f pos(static_cast<float>(x), static_cast<float>(y));
 
 	if( mTextTexture )
 		gl::draw( mTextTexture, pos );
@@ -62,7 +62,7 @@ void Console::draw()
 
 void Console::sendChar(char a)
 {
-	if (inputLine.size() < getLineCharsLimit()) 
+	if (inputLine.size() < (unsigned)getLineCharsLimit()) 
 		inputLine += a;
 	render();
 }
@@ -71,11 +71,11 @@ string Console::sendLine()
 {
 	if (inputLine.size() == inputLinePrefix.size()) // empty line
 		return "";
-	if (lines.size() > maxLines)
+	if (lines.size() > (unsigned)maxLines)
 		lines.erase(lines.begin());
 
 	auto it = inputLine.begin();
-	for (int i = 0; i < inputLinePrefix.size(); i++)
+	for (unsigned int i = 0; i < inputLinePrefix.size(); i++)
 		inputLine.erase(it);
 
 	lines.push_back(inputLine);
@@ -88,7 +88,7 @@ string Console::sendLine()
 
 void Console::output(string s)
 {
-	while (s.size() > getLineCharsLimit())
+	while (s.size() > (unsigned)getLineCharsLimit())
 	{
 		lines.push_back(s.substr(0, getLineCharsLimit()));
 		s = s.substr(getLineCharsLimit(), s.size() - getLineCharsLimit());
@@ -96,7 +96,7 @@ void Console::output(string s)
 
 	lines.push_back(s);
 
-	while (lines.size() > maxLines + 1)
+	while (lines.size() > (unsigned)(maxLines + 1))
 		lines.erase(lines.begin());
 
 	render();
@@ -126,12 +126,12 @@ void Console::adjustMaxLines()
 void Console::setFontSize(int a)
 {
 	fontSize = a;
-	mFont = Font( font, fontSize ); 
+	mFont = Font( font, static_cast<float>(fontSize)); 
 	inputLine = inputLinePrefix; 
 	adjustMaxLines();
 }
 
 int Console::getLineCharsLimit() // returns max number of characters that can fit on a line 
 {
-	return (width / (fontSize / 2.3)) + 1; 
+	return static_cast<int>((width / (fontSize / 2.3)) + 1.0); 
 }
