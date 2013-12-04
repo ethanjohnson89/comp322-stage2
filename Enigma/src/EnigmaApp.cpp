@@ -4,6 +4,7 @@
 #include "console.h"
 #include "GameManager.h"
 #include "globals.h"
+#include "EnigmaArea.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -16,7 +17,7 @@ private:
 	Worldmap worldmap;
 	bool mapActive;
 	void eventAreaClicked(MouseEvent event);
-
+	EnigmaArea testArea;
 public:
 	void setup();
 	void prepareSettings(Settings *settings);
@@ -38,6 +39,7 @@ void EnigmaApp::setup()
 	con.setHeight(200);
 	con.setX(0);
 	con.setY(505);
+	testArea.initialize("area", "this is an area", 0.0f, 0.0f, gl::Texture(loadImage(loadAsset("noImageAvailable.jpg"))), gl::Texture(loadImage(loadAsset("noImageAvailable.jpg"))));
 }
 
 void EnigmaApp::mouseDown( MouseEvent event )
@@ -77,6 +79,8 @@ void EnigmaApp::draw()
 	// clear out the window with black
 	gl::clear( Color( 0, 30, 0 ) );  
 	con.draw();
+	testArea.drawThumbnail();
+	testArea.drawBackgroundImage();
 }
 
 CINDER_APP_NATIVE( EnigmaApp, RendererGl )

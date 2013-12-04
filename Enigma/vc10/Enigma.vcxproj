@@ -108,6 +108,7 @@
     <ClCompile Include="..\src\EnigmaApp.cpp" />
     <ClCompile Include="..\src\GameManager.cpp" />
     <ClCompile Include="..\src\Worldmap.cpp" />
+    <ClCompile Include="..\src\EnigmaArea.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
