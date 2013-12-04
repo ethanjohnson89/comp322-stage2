@@ -12,7 +12,7 @@ private:
 	Console con;
 	Worldmap worldmap;
 	bool mapActive;
-	void eventAreaClicked(MouseEvent event);
+	bool eventAreaClicked(MouseEvent event);
 	EnigmaArea testArea, testArea2;
 public:
 	void setup();
@@ -42,28 +42,27 @@ void EnigmaApp::setup()
 
 void EnigmaApp::mouseDown( MouseEvent event )
 {
-	if (event.getX() > EVENT_WINDOW_X  &&
-		event.getX() < EVENT_WINDOW_X + EVENT_WINDOW_WIDTH &&
-		event.getY() > EVENT_WINDOW_Y  &&
-		event.getY() < EVENT_WINDOW_Y + EVENT_WINDOW_HEIGHT)
-	{
-		eventAreaClicked(event);
-	}
-
-}
-
-void EnigmaApp::eventAreaClicked(MouseEvent event)
-{
-	if (mapActive)
-	{
-		int oldArea = worldmap.getCurrentAreaIndex();
-		int newArea = worldmap.mapClicked(event.getX(), event.getY());
-		if (newArea != -1 && newArea != oldArea)
+	if (eventAreaClicked(event)) {
+		if (mapActive)
 		{
-			worldmap.setCurrentArea(newArea);
-			con.output("You have entered " + worldmap.getArea(newArea)->getName());
+			int oldArea = worldmap.getCurrentAreaIndex();
+			int newArea = worldmap.mapClicked(event.getX(), event.getY());
+			if (newArea != -1 && newArea != oldArea)
+			{
+				worldmap.setCurrentArea(newArea);
+				con.output("You have entered " + worldmap.getArea(newArea)->getName());
+			}
 		}
 	}
+}
+
+bool EnigmaApp::eventAreaClicked(MouseEvent event)
+{
+	return 
+		event.getX() > EVENT_WINDOW_X  && 
+		event.getX() < EVENT_WINDOW_X + EVENT_WINDOW_WIDTH &&	
+		event.getY() > EVENT_WINDOW_Y  && 
+		event.getY() < EVENT_WINDOW_Y + EVENT_WINDOW_HEIGHT;
 }
 
 void EnigmaApp::keyDown( KeyEvent event ) 
