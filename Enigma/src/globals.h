@@ -38,6 +38,10 @@ namespace windowNS
 	static const int DIVIDER_Y = EVENT_WINDOW_Y + EVENT_WINDOW_HEIGHT;
 	static const int DIVIDER_WIDTH = WINDOW_WIDTH - 10;
 	static const int DIVIDER_HEIGHT = 5;
+	static const int MENUBUTTONS_X = 5;
+	static const int MENUBUTTONS_Y = 5;
+	static const int MENUBUTTONS_HEIGHT = 80;
+	static const int MENUBUTTONS_WIDTH = EVENT_WINDOW_X - MENUBUTTONS_X - 5;
 }
 
 #endif

@@ -22,11 +22,9 @@ private:
 	gl::Texture mTextTexture;
 	Vec2f mSize;
 	Font mFont;
-
-	int x, y;
+	int x, y, width, height;
 	string inputLine;
 	vector<string> lines;
-	int width, height;
 	int maxLines;
 	string inputLinePrefix;
 	string font;

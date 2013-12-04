@@ -1,6 +1,9 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "GameManager.h"
+#include "globals.h"
+#include "EnigmaArea.h"
+#include "MenuButton.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -14,6 +17,8 @@ private:
 	bool mapActive;
 	bool eventAreaClicked(MouseEvent event);
 	EnigmaArea testArea, testArea2;
+	vector<MenuButton> menuButtons;
+	MenuButton button1, button2, button3, button4;
 public:
 	void setup();
 	void prepareSettings(Settings *settings);
@@ -36,6 +41,14 @@ void EnigmaApp::setup()
 	worldmap.setBackgroundPicture(gl::Texture(loadImage(loadAsset("worldmap1.jpg"))));
 	worldmap.addArea(&testArea);
 	worldmap.addArea(&testArea2);
+	button1.setImage(gl::Texture(loadImage(loadAsset("button1.jpg"))));
+	button2.setImage(gl::Texture(loadImage(loadAsset("button2.jpg"))));
+	button3.setImage(gl::Texture(loadImage(loadAsset("button3.jpg"))));
+	button4.setImage(gl::Texture(loadImage(loadAsset("button4.jpg"))));
+	menuButtons.push_back(button1);
+	menuButtons.push_back(button2);
+	menuButtons.push_back(button3);
+	menuButtons.push_back(button4);
 	con.output("--- Welcome to the Enigma engine. ---");
 	con.output(" ");
 }
@@ -92,6 +105,8 @@ void EnigmaApp::draw()
 	con.draw();
 	worldmap.draw();
 	gl::drawSolidRect(Rectf(windowNS::DIVIDER_X, windowNS::DIVIDER_Y, windowNS::DIVIDER_WIDTH + windowNS::DIVIDER_X, windowNS::DIVIDER_HEIGHT + windowNS::DIVIDER_Y));
+	for (int i = 0; i < menuButtons.size(); i++)
+		menuButtons[i].draw(i);
 }
 
 CINDER_APP_NATIVE( EnigmaApp, RendererGl )

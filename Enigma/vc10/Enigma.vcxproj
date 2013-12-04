@@ -108,6 +108,7 @@
     <ClCompile Include="..\src\GameManager.cpp" />
     <ClCompile Include="..\src\Inventory.cpp" />
     <ClCompile Include="..\src\Item.cpp" />
+    <ClCompile Include="..\src\MenuButton.cpp" />
     <ClCompile Include="..\src\Worldmap.cpp" />
     <ClCompile Include="..\src\EnigmaArea.cpp" />
   </ItemGroup>
@@ -119,6 +120,7 @@
     <ClInclude Include="..\src\globals.h" />
     <ClInclude Include="..\src\Inventory.h" />
     <ClInclude Include="..\src\Item.h" />
+    <ClInclude Include="..\src\MenuButton.h" />
     <ClInclude Include="..\src\Worldmap.h" />
     <ClInclude Include="ExceptionClasses.h" />
     <ClInclude Include="..\src\GameManager.h" />
