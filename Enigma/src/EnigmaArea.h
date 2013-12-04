@@ -10,6 +10,7 @@
 using std::string;
 using namespace ci;
 using namespace ci::app;
+using namespace windowNS;
 
 class EnigmaArea {
 

@@ -28,17 +28,13 @@ public:
 };
 
 void EnigmaApp::prepareSettings( Settings *settings ){
-    settings->setWindowSize( 1000, 700 );
+    settings->setWindowSize( WINDOW_WIDTH, WINDOW_HEIGHT );
 }
 
 
 void EnigmaApp::setup()
 {
 	con.setup();
-	con.setWidth(600);
-	con.setHeight(200);
-	con.setX(0);
-	con.setY(windowNS::eventWindowY2 + 10);
 	testArea.initialize("area", "this is an area", 0.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
 	testArea2.initialize("area2", "this is an area2", 200.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
 	worldmap.setBackgroundPicture(gl::Texture(loadImage(loadAsset("worldmap1.jpg"))));
@@ -50,10 +46,10 @@ void EnigmaApp::setup()
 
 void EnigmaApp::mouseDown( MouseEvent event )
 {
-	if (event.getX() > windowNS::eventWindowX  &&
-		event.getX() < windowNS::eventWindowX2 &&
-		event.getY() > windowNS::eventWindowY  &&
-		event.getY() < windowNS::eventWindowY2)
+	if (event.getX() > EVENT_WINDOW_X  &&
+		event.getX() < EVENT_WINDOW_X + EVENT_WINDOW_WIDTH &&
+		event.getY() > EVENT_WINDOW_Y  &&
+		event.getY() < EVENT_WINDOW_Y + EVENT_WINDOW_HEIGHT)
 	{
 		eventAreaClicked(event);
 	}

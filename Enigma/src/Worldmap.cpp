@@ -24,7 +24,7 @@ void Worldmap::addArea(EnigmaArea *newArea)
 void Worldmap::draw()
 {
 	if (hasBackground)
-		gl::draw(background, Area(windowNS::eventWindowX, windowNS::eventWindowY, windowNS::eventWindowX2, windowNS::eventWindowY2));
+		gl::draw(background, EVENT_WINDOW_AREA);
 
 	for (int i = 0; i < areas.size(); i++)
 		areas[i]->drawThumbnail();
@@ -32,14 +32,10 @@ void Worldmap::draw()
 
 int Worldmap::mapClicked(int x, int y)
 {
-	int areaWidth = 80;
-	int areaHeight = 80;
-
-
 	for (int i = 0; i < areas.size(); i++)
 	{
-		if (x > areas[i]->getPosition().x + windowNS::eventWindowX && x < areas[i]->getPosition().x + areaWidth  + windowNS::eventWindowX && 
-			y > areas[i]->getPosition().y + windowNS::eventWindowY && y < areas[i]->getPosition().y + areaHeight + windowNS::eventWindowY)
+		if (x > areas[i]->getPosition().x + EVENT_WINDOW_X && x < areas[i]->getPosition().x + AREA_WIDTH  + EVENT_WINDOW_X && 
+			y > areas[i]->getPosition().y + EVENT_WINDOW_Y && y < areas[i]->getPosition().y + AREA_HEIGHT + EVENT_WINDOW_Y)
 		{
 			return i;
 		}

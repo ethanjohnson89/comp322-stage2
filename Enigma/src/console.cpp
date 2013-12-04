@@ -3,8 +3,8 @@
 
 Console::Console()
 {
-	width = 400;
-	height = 400;
+	width = CONSOLE_WIDTH;
+	height = CONSOLE_HEIGHT;
 	inputLinePrefix = ">";
 	inputLine = inputLinePrefix;
 	lines.push_back(" ");
@@ -18,7 +18,10 @@ Console::Console()
 void Console::setup()
 {
 	mFont = Font( font, fontSize );
-
+	width = CONSOLE_WIDTH;
+	height = CONSOLE_HEIGHT;
+	x = CONSOLE_X;
+	y = CONSOLE_Y;
 	adjustMaxLines();
 
 	render();

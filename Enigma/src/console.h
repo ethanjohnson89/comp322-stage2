@@ -2,6 +2,7 @@
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/Text.h"
+#include "globals.h"
 #include <string>
 #include <sstream>
 #include <vector>
@@ -11,6 +12,7 @@ using std::stringstream;
 using namespace ci;
 using namespace ci::app;
 using namespace std;
+using namespace windowNS;
 
 class Console {
 private:

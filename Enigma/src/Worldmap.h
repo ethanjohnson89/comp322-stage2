@@ -10,6 +10,7 @@
 using std::vector;
 using std::string;
 using namespace ci;
+using namespace windowNS;
 
 
 class Worldmap
