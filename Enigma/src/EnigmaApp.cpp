@@ -40,10 +40,12 @@ void EnigmaApp::setup()
 	con.setX(0);
 	con.setY(windowNS::eventWindowY2 + 10);
 	testArea.initialize("area", "this is an area", 0.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
-	testArea2.initialize("area2", "this is an area", 200.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
+	testArea2.initialize("area2", "this is an area2", 200.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
 	worldmap.setBackgroundPicture(gl::Texture(loadImage(loadAsset("worldmap1.jpg"))));
 	worldmap.addArea(&testArea);
 	worldmap.addArea(&testArea2);
+	con.output("--- Welcome to the Enigma engine. ---");
+	con.output(" ");
 }
 
 void EnigmaApp::mouseDown( MouseEvent event )
@@ -61,7 +63,15 @@ void EnigmaApp::mouseDown( MouseEvent event )
 void EnigmaApp::eventAreaClicked(MouseEvent event)
 {
 	if (mapActive)
-		worldmap.mapClicked(event.getX(), event.getY());
+	{
+		int oldArea = worldmap.getCurrentAreaIndex();
+		int newArea = worldmap.mapClicked(event.getX(), event.getY());
+		if (newArea != -1 && newArea != oldArea)
+		{
+			worldmap.setCurrentArea(newArea);
+			con.output("You have entered " + worldmap.getArea(newArea)->getName());
+		}
+	}
 }
 
 void EnigmaApp::keyDown( KeyEvent event ) 

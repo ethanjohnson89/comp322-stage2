@@ -59,8 +59,8 @@ void Console::draw()
 
 void Console::sendChar(char a)
 {
-	if ((inputLine.size() + 1) * ((fontSize) / 2.25) < width)
-	inputLine += a;
+	if (inputLine.size() < getLineCharsLimit()) 
+		inputLine += a;
 	render();
 }
 
@@ -85,9 +85,17 @@ string Console::sendLine()
 
 void Console::output(string s)
 {
-	if (lines.size() > maxLines)
-		lines.erase(lines.begin());
+	while (s.size() > getLineCharsLimit())
+	{
+		lines.push_back(s.substr(0, getLineCharsLimit()));
+		s = s.substr(getLineCharsLimit(), s.size() - getLineCharsLimit());
+	}
+
 	lines.push_back(s);
+
+	while (lines.size() > maxLines + 1)
+		lines.erase(lines.begin());
+
 	render();
 }
 
@@ -118,4 +126,9 @@ void Console::setFontSize(int a)
 	mFont = Font( font, fontSize ); 
 	inputLine = inputLinePrefix; 
 	adjustMaxLines();
+}
+
+int Console::getLineCharsLimit() // returns max number of characters that can fit on a line 
+{
+	return (width / (fontSize / 2.3)) + 1; 
 }

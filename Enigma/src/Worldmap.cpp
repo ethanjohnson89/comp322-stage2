@@ -41,7 +41,6 @@ int Worldmap::mapClicked(int x, int y)
 		if (x > areas[i]->getPosition().x + windowNS::eventWindowX && x < areas[i]->getPosition().x + areaWidth  + windowNS::eventWindowX && 
 			y > areas[i]->getPosition().y + windowNS::eventWindowY && y < areas[i]->getPosition().y + areaHeight + windowNS::eventWindowY)
 		{
-			setCurrentArea(i);
 			return i;
 		}
 	}

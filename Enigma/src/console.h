@@ -15,6 +15,7 @@ using namespace std;
 class Console {
 private:
 	void adjustMaxLines();
+	int  getLineCharsLimit();
 
 	gl::Texture mTextTexture;
 	Vec2f mSize;

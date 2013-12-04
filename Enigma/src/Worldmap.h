@@ -27,7 +27,7 @@ private:
 public:
 	Worldmap();
 
-	void draw();
+	void  draw();
 	int   mapClicked(int x, int y);
 	
 	EnigmaArea* getArea(int index) {return areas[index];}
