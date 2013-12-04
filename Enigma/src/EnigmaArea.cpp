@@ -12,9 +12,11 @@ void EnigmaArea::initialize(string name, string description, float x, float y, g
 }
 
 void EnigmaArea::drawThumbnail() {
-	gl::draw(thumbnailImage, position);
+	Vec2f position2 = position + Vec2f(windowNS::eventWindowX, windowNS::eventWindowY);
+	gl::draw(thumbnailImage, position2);
 }
 
 void EnigmaArea::drawBackgroundImage() {
-	gl::draw(backgroundImage, Vec2f(0.0f, 0.0f)); // change 0.0f to top-left corner of event area when we have it in Globals.h
+
+	gl::draw(backgroundImage, Vec2f(windowNS::eventWindowX, windowNS::eventWindowY)); 
 }

@@ -3,7 +3,7 @@
 #define _WORLDMAP_H
 
 #include "cinder/gl/gl.h"
-//#include "globals.h"
+#include "globals.h"
 #include "EnigmaArea.h"
 #include <vector>
 #include <string>
@@ -19,9 +19,10 @@ private:
 	int areaIndex;
 	int defaultArea;
 	string backgroundFilename;
-	//gl::Texture background;
+	gl::Texture background;
+	bool hasBackground;
 
-	//void  loadBackgroundPicture() {background = gl::Texture(loadImage(loadResource(bkfname)));}
+
 
 public:
 	Worldmap();
@@ -35,7 +36,7 @@ public:
 	int	  getAreaCount() {return areas.size();}
 	void  setDefaultArea(int a) {defaultArea = a;}
 	void  setAreaToDefault() {areaIndex = defaultArea;}
-	//void  setBackgroundPicture(string bkfname) {backgroundFilename = bkfname; loadBackgroundPicture();}
+	void  setBackgroundPicture(gl::Texture back) {background = back; hasBackground = true;}
 
 	void  setCurrentArea(int index);
 	void  addArea(EnigmaArea *newArea);

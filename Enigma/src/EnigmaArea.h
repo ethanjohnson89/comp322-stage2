@@ -6,6 +6,7 @@
 #include "cinder/gl/Texture.h"
 #include "cinder/Vector.h"
 #include "cinder/app/AppNative.h"
+#include "globals.h"
 using std::string;
 using namespace ci;
 using namespace ci::app;

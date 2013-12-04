@@ -17,7 +17,7 @@ private:
 	Worldmap worldmap;
 	bool mapActive;
 	void eventAreaClicked(MouseEvent event);
-	EnigmaArea testArea;
+	EnigmaArea testArea, testArea2;
 public:
 	void setup();
 	void prepareSettings(Settings *settings);
@@ -38,16 +38,20 @@ void EnigmaApp::setup()
 	con.setWidth(600);
 	con.setHeight(200);
 	con.setX(0);
-	con.setY(505);
+	con.setY(windowNS::eventWindowY2 + 10);
 	testArea.initialize("area", "this is an area", 0.0f, 0.0f, gl::Texture(loadImage(loadAsset("noImageAvailable.jpg"))), gl::Texture(loadImage(loadAsset("noImageAvailable.jpg"))));
+	testArea2.initialize("area2", "this is an area", 200.0f, 0.0f, gl::Texture(loadImage(loadAsset("noImageAvailable.jpg"))), gl::Texture(loadImage(loadAsset("noImageAvailable.jpg"))));
+	worldmap.setBackgroundPicture(gl::Texture(loadImage(loadAsset("worldmap1.jpg"))));
+	worldmap.addArea(&testArea);
+	worldmap.addArea(&testArea2);
 }
 
 void EnigmaApp::mouseDown( MouseEvent event )
 {
-	if (event.getX() > windowNS::eventWindowBounds.getX1() &&
-		event.getX() < windowNS::eventWindowBounds.getX2() &&
-		event.getY() > windowNS::eventWindowBounds.getY1() &&
-		event.getY() < windowNS::eventWindowBounds.getY2())
+	if (event.getX() > windowNS::eventWindowX  &&
+		event.getX() < windowNS::eventWindowX2 &&
+		event.getY() > windowNS::eventWindowY  &&
+		event.getY() < windowNS::eventWindowY2)
 	{
 		eventAreaClicked(event);
 	}
@@ -62,6 +66,12 @@ void EnigmaApp::eventAreaClicked(MouseEvent event)
 
 void EnigmaApp::keyDown( KeyEvent event ) 
 {
+	if (event.getChar() == '-') // debug
+	{
+		con.output("current area: " + worldmap.getCurrentArea()->getName());
+		return;
+	}
+
 	if( event.getCode() == KeyEvent::KEY_RETURN )
 		con.sendLine();
 	else if (event.getCode() == KeyEvent::KEY_BACKSPACE)
@@ -79,8 +89,7 @@ void EnigmaApp::draw()
 	// clear out the window with black
 	gl::clear( Color( 0, 30, 0 ) );  
 	con.draw();
-	testArea.drawThumbnail();
-	testArea.drawBackgroundImage();
+	worldmap.draw();
 }
 
 CINDER_APP_NATIVE( EnigmaApp, RendererGl )

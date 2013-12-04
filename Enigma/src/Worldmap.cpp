@@ -1,12 +1,12 @@
 
-
 #include "worldmap.h"
 
 Worldmap::Worldmap()
 {
 	areaIndex = 0;
 	defaultArea = 0;
-	backgroundFilename = "none";
+	hasBackground = false;
+	
 }
 
 
@@ -23,8 +23,8 @@ void Worldmap::addArea(EnigmaArea *newArea)
 
 void Worldmap::draw()
 {
-	//if (backgroundFilename != "none")
-	//	gl::draw(background, windowNS::eventWindowBounds);
+	if (hasBackground)
+		gl::draw(background, Area(windowNS::eventWindowX, windowNS::eventWindowY, windowNS::eventWindowX2, windowNS::eventWindowY2));
 
 	for (int i = 0; i < areas.size(); i++)
 		areas[i]->drawThumbnail();
@@ -38,8 +38,8 @@ int Worldmap::mapClicked(int x, int y)
 
 	for (int i = 0; i < areas.size(); i++)
 	{
-		if (x > areas[i]->getPosition().x && x < areas[i]->getPosition().x + areaWidth && 
-			y > areas[i]->getPosition().y && y < areas[i]->getPosition().y + areaHeight)
+		if (x > areas[i]->getPosition().x + windowNS::eventWindowX && x < areas[i]->getPosition().x + areaWidth  + windowNS::eventWindowX && 
+			y > areas[i]->getPosition().y + windowNS::eventWindowY && y < areas[i]->getPosition().y + areaHeight + windowNS::eventWindowY)
 		{
 			setCurrentArea(i);
 			return i;
