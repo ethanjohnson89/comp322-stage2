@@ -17,9 +17,9 @@ public:
 																		// as identified by the parser, are passed to the command in the vector args. 
 																		// The pointer to the GameManager allows action functions to interact with 
 																		// the game as desired by the client.
-	void setAssociatedFunction(CommandFunction *fn){associatedFunction = fn;}
-	CommandFunction* getAssociatedFunction(){return associatedFunction;}
-	string getKey(){return key;}
+	void setAssociatedFunction(CommandFunction *fn) {associatedFunction = fn;}
+	CommandFunction* getAssociatedFunction() {return associatedFunction;}
+	string getKey() {return key;}
 private: 
 	CommandFunction* associatedFunction;
 	string key;

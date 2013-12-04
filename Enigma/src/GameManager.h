@@ -2,13 +2,16 @@
 #define __GAMEMANAGER_H
 #include "Worldmap.h"
 #include "Inventory.h"
+//#include "ExceptionClasses.h"
 
 class Command;
 #include "Command.h"
 
-#include <vector>
+#include <string>
+#include <map>
 
-using std::vector;
+using std::string;
+using std::map;
 
 class GameManager {
 
@@ -21,9 +24,9 @@ public:
 	Inventory* getInventory() {return &inventory;}
 	void setInventory(Inventory inv) {inventory = inv;}
 	
-	Command* getCommand(string cmdName); //Throws a commandNotFoundException
-	void addCommand(Command* com){commands.push_back(*com);}
-	int getCommandCount(){return commands.size();}
+	Command getCommand(string cmdName); //Throws a commandNotFoundException
+	void addCommand(Command com) { commands[com.getKey()] = com; }
+	int getCommandCount() { return commands.size(); }
 
 	/**************MULTIPLE INVENTORY SUPPORT*****************
 	void addMap(Worldmap wm) {maps.push_back(wm);}
@@ -46,7 +49,7 @@ private:
 
 	Inventory inventory;
 	Worldmap currentMap;
-	vector<Command> commands;
+	map<string,Command> commands;
 };
 
 #endif
