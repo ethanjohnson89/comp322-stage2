@@ -24,8 +24,11 @@ public:
 	Inventory* getInventory() {return &inventory;}
 	void setInventory(Inventory inv) {inventory = inv;}
 	
+	typedef std::map<std::string,Command>::iterator CommandIterator;
 	Command getCommand(string cmdName); //Throws a commandNotFoundException
 	void addCommand(Command com) { commands[com.getKey()] = com; }
+	CommandIterator getCommandIteratorBegin() { return commands.begin(); }
+	CommandIterator getCommandIteratorEnd() { return commands.end(); }
 	int getCommandCount() { return commands.size(); }
 
 	/**************MULTIPLE INVENTORY SUPPORT*****************
