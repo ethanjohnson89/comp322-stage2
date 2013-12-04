@@ -113,6 +113,8 @@
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\src\Command.h" />
     <ClInclude Include="..\src\console.h" />
+    <ClInclude Include="..\src\EnigmaArea.h" />
+    <ClInclude Include="..\src\globals.h" />
     <ClInclude Include="..\src\Worldmap.h" />
     <ClInclude Include="ExceptionClasses.h" />
     <ClInclude Include="..\src\GameManager.h" />

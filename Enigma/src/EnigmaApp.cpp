@@ -1,7 +1,9 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
+#include "Worldmap.h"
 #include "console.h"
 #include "GameManager.h"
+#include "globals.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -11,6 +13,10 @@ class EnigmaApp : public AppNative {
 private:
 	GameManager gm;
 	Console con;
+	Worldmap worldmap;
+	bool mapActive;
+	void eventAreaClicked(MouseEvent event);
+
 public:
 	void setup();
 	void prepareSettings(Settings *settings);
@@ -36,6 +42,20 @@ void EnigmaApp::setup()
 
 void EnigmaApp::mouseDown( MouseEvent event )
 {
+	if (event.getX() > windowNS::eventWindowBounds.getX1() &&
+		event.getX() < windowNS::eventWindowBounds.getX2() &&
+		event.getY() > windowNS::eventWindowBounds.getY1() &&
+		event.getY() < windowNS::eventWindowBounds.getY2())
+	{
+		eventAreaClicked(event);
+	}
+
+}
+
+void EnigmaApp::eventAreaClicked(MouseEvent event)
+{
+	if (mapActive)
+		worldmap.mapClicked(event.getX(), event.getY());
 }
 
 void EnigmaApp::keyDown( KeyEvent event ) 

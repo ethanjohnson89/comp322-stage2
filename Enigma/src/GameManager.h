@@ -5,11 +5,11 @@ class GameManager {
 
 public:
 	GameManager(){}
-	//Map* getCurrentMap();
-	//Map* getMap(int index); //Throws invalidIndexException
+	//Worldmap* getCurrentMap();
+	//Worldmap* getMap(int index); //Throws invalidIndexException
 	//int getCurrentMapIndex();
 	//void setCurrentMap(int index); //Throws invalidIndexException
-	//Map* replaceMap(int index, Map* newmap); //Returns replaced map, throws invalidIndexException
+	//Worldmap* replaceMap(int index, Map* newmap); //Returns replaced map, throws invalidIndexException
 	//int getMapCount();
 
 	//Inventory* getCurrentInventory();
