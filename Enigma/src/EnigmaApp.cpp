@@ -167,8 +167,14 @@ void EnigmaApp::keyDown( KeyEvent event )
 	if( event.getCode() == KeyEvent::KEY_RETURN )
 	{
 		string cmdString = con.sendLine();
-		gm.parseAndExecuteCommand(cmdString); // currently not checking the return value from this - we should give some kind of feedback to the user "hey, there's another command still running!" if it returns false
-											  // also, we are not catching the CommandNotFoundException if the command is invalid - this is very important!
+		try {
+			gm.parseAndExecuteCommand(cmdString); // currently not checking the return value from this - we should give some kind of feedback to the user "hey, there's another command still running!" if it returns false
+												  // also, we are not catching the CommandNotFoundException if the command is invalid - this is very important!
+		}
+		catch (CommandNotFoundException) {
+			con.output("Command not recognized.");
+		
+		}
 	}
 	else if (event.getCode() == KeyEvent::KEY_BACKSPACE)
 		con.backspace();
