@@ -1,7 +1,11 @@
+#ifndef _CONSOLE_H
+#define _CONSOLE_H
+
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/Text.h"
+#include "boost/thread/mutex.hpp"
 #include "globals.h"
 #include <string>
 #include <sstream>
@@ -31,6 +35,8 @@ private:
 	int fontSize;
 	Color textColor;
 	Color backColor;
+
+	boost::mutex lineBufferMutex;
 
 	// These functions will be called by the friend class EnigmaApp
 	friend class EnigmaApp;
@@ -65,3 +71,5 @@ public:
 	ColorA getBackColor(){return backColor;}
 	
 };
+
+#endif
