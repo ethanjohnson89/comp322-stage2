@@ -114,8 +114,6 @@ void EnigmaApp::mouseDown( MouseEvent event )
 					worldmap.setCurrentArea(newArea);
 					gm.con.output("You have entered " + worldmap.getArea(newArea)->getName());
 				}
-				else					
-					gm.con.output("You are already in that area.");
 				
 				worldmap.setCurrentArea(newArea);
 				gm.lookAtArea();

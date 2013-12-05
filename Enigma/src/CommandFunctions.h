@@ -35,7 +35,6 @@ string goToArea(GameManager *gm, vector<string> args)
 {
 	std::transform(args[0].begin(), args[0].end(), args[0].begin(), ::tolower);
 
-	gm->lookingAtMap = false;
 	Worldmap *currentMap = gm->getMap();
 	int targetAreaIndex = 0;
 	for(; targetAreaIndex < currentMap->getAreaCount(); targetAreaIndex++)
@@ -51,7 +50,14 @@ string goToArea(GameManager *gm, vector<string> args)
 		return "";
 	}
 
-	currentMap->setCurrentArea(targetAreaIndex);
+	
+	if (currentMap->getCurrentAreaIndex() != targetAreaIndex)
+	{
+		currentMap->setCurrentArea(targetAreaIndex);
+		gm->printText("You have entered " + currentMap->getArea(targetAreaIndex)->getName());
+	}
+	else if(!gm->lookingAtMap)
+		gm->printText("You are already in that area.");
 	gm->lookAtArea();
 	return "";
 }
