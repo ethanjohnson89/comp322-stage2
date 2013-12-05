@@ -4,6 +4,7 @@
 
 #include "GameManager.h"
 
+#include <algorithm>
 #include <vector>
 #include <string>
 using std::vector;
@@ -24,20 +25,26 @@ string dummyCommand(GameManager *gm, vector<string> args)
 string help(GameManager *gm, vector<string> args)
 {
 	gm->printText("\nKey Bindings:\n     Up/Down arrows: scroll inventory\n");
-	gm->printText("Commands:\n     Go *AreaName*:  Goes to a new area.\n\          -note: Area names are case sensitive!");
-	gm->printText("\n     Examine *itemName*:  Displays the item's name and description\n          -note: item names are case sensitive!");
+	gm->printText("Commands:\n     Go *AreaName*:  Goes to a new area.\n");
+	gm->printText("\n     Examine *ItemName*:  Displays the item's name and description\n");
 	gm->printText("\n     Exit");
 	return "";
 }
 
 string goToArea(GameManager *gm, vector<string> args)
 {
+	std::transform(args[0].begin(), args[0].end(), args[0].begin(), ::tolower);
+
 	gm->lookingAtMap = false;
 	Worldmap *currentMap = gm->getMap();
 	int targetAreaIndex = 0;
 	for(; targetAreaIndex < currentMap->getAreaCount(); targetAreaIndex++)
-		if(currentMap->getArea(targetAreaIndex)->getName() == args[0])
+	{
+		string areaName_lower = currentMap->getArea(targetAreaIndex)->getName();
+		std::transform(areaName_lower.begin(), areaName_lower.end(), areaName_lower.begin(), ::tolower);
+		if(areaName_lower == args[0])
 			break;
+	}
 	if(targetAreaIndex >= currentMap->getAreaCount())
 	{
 		gm->printText("Sorry, I don't know of that place!");
