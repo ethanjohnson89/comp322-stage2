@@ -121,7 +121,7 @@ void EnigmaApp::mouseDown( MouseEvent event )
 					con.output("You are already in that area.");
 				}
 				worldmap.setCurrentArea(newArea);
-				gm.lookingAtMap = false;
+				gm.lookAtArea();
 			}
 		}
 	}
@@ -137,7 +137,7 @@ void EnigmaApp::mouseDown( MouseEvent event )
 				//menuButtons[index].getFunction();
 				con.output(menuButtons[index].getAssociatedCommand());
 				menuButtonClicked = index;
-				gm.parseAndExecuteCommand(menuButtons[index].getAssociatedCommand());
+				bool result = gm.parseAndExecuteCommand(menuButtons[index].getAssociatedCommand());
 				break;
 			}
 		}

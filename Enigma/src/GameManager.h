@@ -28,6 +28,7 @@ public:
 	Worldmap* getMap() {return &currentMap;}
 	void setMap(Worldmap wm){currentMap = wm;}
 	void lookAtMap(){lookingAtMap = true;}
+	void lookAtArea(){lookingAtMap = false;}
 	
 	Inventory* getInventory() {return &inventory;}
 	void setInventory(Inventory inv) {inventory = inv;}
