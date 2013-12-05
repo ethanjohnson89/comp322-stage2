@@ -10,7 +10,7 @@ Console::Console()
 {
 	width = CONSOLE_WIDTH;
 	height = CONSOLE_HEIGHT;
-	inputLinePrefix = ">";
+	inputLinePrefix = "->";
 	inputLine = inputLinePrefix;
 	lines.push_back(" ");
 	font = CONSOLE_FONT;
@@ -113,7 +113,7 @@ string Console::sendLine()
 		for (unsigned int i = 0; i < inputLinePrefix.size(); i++)
 			inputLine.erase(it);
 
-		lines.push_back(">" + inputLine);
+		lines.push_back(inputLinePrefix + inputLine);
 		sentLine = inputLine;
 		inputLine = inputLinePrefix;
 	}

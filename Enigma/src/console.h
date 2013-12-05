@@ -63,6 +63,7 @@ public:
 	void setY(int a){y = a;}
 	void setXY(int a, int b){x = a; y = b;}
 	void setInputLinePrefix(string s){inputLinePrefix = s;}
+	string getInputLinePrefix(){return inputLinePrefix;}
 	void setFontSize(int a);
 	int  getFontSize(){return fontSize;}
 	void setTextColor(Color c){textColor = c;}
