@@ -1,3 +1,9 @@
+/****************************************
+Group #: 2
+Members: Steve Patterson, James Mart, Nick Halvorsen, Ethan Johnson
+Course: Comp 322
+Date: 12/4/13
+****************************************/
 
 #ifndef _MENUBUTTON_H
 #define _MENUBUTTON_H
@@ -21,11 +27,11 @@ private:
 
 public:
 	MenuButton() { }
-	void initialize(string command, gl::Texture image);
-	void draw(int index, int total, int buttonClicked = -1);
-	string getAssociatedCommand() { return command; }
-	void setAssociatedCommand(string cmd) { command = cmd; }
-	void setImage(gl::Texture img){image = img;}
+	virtual void initialize(string command, gl::Texture image);
+	virtual void draw(int index, int total, int buttonClicked = -1);
+	virtual string getAssociatedCommand() { return command; }
+	virtual void setAssociatedCommand(string cmd) { command = cmd; }
+	virtual void setImage(gl::Texture img){image = img;}
 };
 
 

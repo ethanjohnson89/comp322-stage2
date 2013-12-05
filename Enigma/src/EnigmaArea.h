@@ -1,3 +1,10 @@
+/****************************************
+Group #: 2
+Members: Steve Patterson, James Mart, Nick Halvorsen, Ethan Johnson
+Course: Comp 322
+Date: 12/4/13
+****************************************/
+
 #ifndef __ENIGMA_AREA_H
 #define __ENIGMA_AREA_H
 
@@ -23,19 +30,17 @@ private:
 
 public:
 	EnigmaArea();
-	void initialize(string name, string description, float x, float y, gl::Texture thumbnailImage, gl::Texture backgroundImage);
-	void drawThumbnail();
-	void drawBackgroundImage();
-//	Command::CommandFunction onEntry;
+	virtual void initialize(string name, string description, float x, float y, gl::Texture thumbnailImage, gl::Texture backgroundImage);
+	virtual void drawThumbnail();
+	virtual void drawBackgroundImage();
 
-	//getters and setters
-	string getName() { return name; }
-	void setName(string name) { EnigmaArea::name = name; }
-	string getDescription() { return description; }
-	void setDescription(string description) { EnigmaArea::description = description; }
-	Vec2f getPosition() { return position; }
-	void setPosition(Vec2f pos) { position = pos; }
-	gl::Texture getBackgroundImage() { return backgroundImage; }
+	virtual string getName() { return name; }
+	virtual void setName(string name) { EnigmaArea::name = name; }
+	virtual string getDescription() { return description; }
+	virtual void setDescription(string description) { EnigmaArea::description = description; }
+	virtual Vec2f getPosition() { return position; }
+	virtual void setPosition(Vec2f pos) { position = pos; }
+	virtual gl::Texture getBackgroundImage() { return backgroundImage; }
 };
 
 #endif

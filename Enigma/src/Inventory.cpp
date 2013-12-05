@@ -1,3 +1,10 @@
+/****************************************
+Group #: 2
+Members: Steve Patterson, James Mart, Nick Halvorsen, Ethan Johnson
+Course: Comp 322
+Date: 12/4/13
+****************************************/
+
 #include "Inventory.h"
 
 

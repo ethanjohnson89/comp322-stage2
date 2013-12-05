@@ -1,3 +1,10 @@
+/****************************************
+Group #: 2
+Members: Steve Patterson, James Mart, Nick Halvorsen, Ethan Johnson
+Course: Comp 322
+Date: 12/4/13
+****************************************/
+
 
 #ifndef _WORLDMAP_H
 #define _WORLDMAP_H
@@ -26,18 +33,18 @@ private:
 public:
 	Worldmap();
 
-	void  draw();
-	int   mapClicked(int x, int y);
+	virtual void  draw();
+	virtual int   mapClicked(int x, int y);
 
-	EnigmaArea* getArea(int index) {return areas[index];}
-	EnigmaArea* getCurrentArea() {return getArea(areaIndex);}
-	int   getCurrentAreaIndex() {return areaIndex;}
-	int	  getAreaCount() {return areas.size();}
-	void  setDefaultArea(int a) {defaultArea = a;}
-	void  setAreaToDefault() {areaIndex = defaultArea;}
-	void  setBackgroundPicture(gl::Texture back) {background = back; hasBackground = true;}
-	void  setCurrentArea(int index);
-	void  addArea(EnigmaArea *newArea);
+	virtual EnigmaArea* getArea(int index) {return areas[index];}
+	virtual EnigmaArea* getCurrentArea() {return getArea(areaIndex);}
+	virtual int   getCurrentAreaIndex() {return areaIndex;}
+	virtual int	  getAreaCount() {return areas.size();}
+	virtual void  setDefaultArea(int a) {defaultArea = a;}
+	virtual void  setAreaToDefault() {areaIndex = defaultArea;}
+	virtual void  setBackgroundPicture(gl::Texture back) {background = back; hasBackground = true;}
+	virtual void  setCurrentArea(int index);
+	virtual void  addArea(EnigmaArea *newArea);
 };
 #endif
 

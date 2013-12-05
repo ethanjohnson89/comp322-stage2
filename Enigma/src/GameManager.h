@@ -1,3 +1,10 @@
+/****************************************
+Group #: 2
+Members: Steve Patterson, James Mart, Nick Halvorsen, Ethan Johnson
+Course: Comp 322
+Date: 12/4/13
+****************************************/
+
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
 #include "Inventory.h"
@@ -30,26 +37,26 @@ public:
 
 	Console con;
 	
-	Worldmap* getMap() {return currentMap;}
-	void setMap(Worldmap *wm){currentMap = wm;}
-	void lookAtMap(){lookingAtMap = true;}
-	void lookAtArea(){lookingAtMap = false;}
+	virtual Worldmap* getMap() {return currentMap;}
+	virtual void setMap(Worldmap *wm){currentMap = wm;}
+	virtual void lookAtMap(){lookingAtMap = true;}
+	virtual void lookAtArea(){lookingAtMap = false;}
 	
-	Inventory* getInventory() {return inventory;}
-	void setInventory(Inventory *inv) {inventory = inv;}
+	virtual Inventory* getInventory() {return inventory;}
+	virtual void setInventory(Inventory *inv) {inventory = inv;}
 	
 	typedef std::map<std::string,Command>::iterator CommandIterator;
-	Command getCommand(string cmdName); //Throws a commandNotFoundException
-	void addCommand(Command com) { commands[com.getKey()] = com; }
-	CommandIterator getCommandIteratorBegin() { return commands.begin(); }
-	CommandIterator getCommandIteratorEnd() { return commands.end(); }
-	int getCommandCount() { return commands.size(); }
+	virtual Command getCommand(string cmdName); //Throws a commandNotFoundException
+	virtual void addCommand(Command com) { commands[com.getKey()] = com; }
+	virtual CommandIterator getCommandIteratorBegin() { return commands.begin(); }
+	virtual CommandIterator getCommandIteratorEnd() { return commands.end(); }
+	virtual int getCommandCount() { return commands.size(); }
 
 	int buttonClicked;
 	int buttonFrames;
 	bool lookingAtMap;
 
-	void printText(string s) { textToPrint << s; }
+	virtual void printText(string s) { textToPrint << s; }
 
 private:
 	Inventory *inventory;

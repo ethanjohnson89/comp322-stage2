@@ -1,3 +1,10 @@
+/****************************************
+Group #: 2
+Members: Steve Patterson, James Mart, Nick Halvorsen, Ethan Johnson
+Course: Comp 322
+Date: 12/4/13
+****************************************/
+
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "GameManager.h"
@@ -6,7 +13,7 @@
 #include "EnigmaArea.h"
 #include "MenuButton.h"
 #include <cstdlib>
-#include <string> // for using getline() on a stringstream
+#include <string>
 
 using namespace ci;
 using namespace ci::app;

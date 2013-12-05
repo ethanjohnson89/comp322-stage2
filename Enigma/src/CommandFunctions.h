@@ -1,3 +1,9 @@
+/****************************************
+Group #: 2
+Members: Steve Patterson, James Mart, Nick Halvorsen, Ethan Johnson
+Course: Comp 322
+Date: 12/4/13
+****************************************/
 
 #ifndef _COMMANDFUNCTIONS_H
 #define _COMMANDFUNCTIONS_H
