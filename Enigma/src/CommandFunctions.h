@@ -21,6 +21,12 @@ string dummyCommand(GameManager *gm, vector<string> args)
 	return "";
 }
 
+string help(GameManager *gm, vector<string> args)
+{
+	gm->printText("Help: Up/Down arrows: scroll inventory");
+	return "";
+}
+
 string goToArea(GameManager *gm, vector<string> args)
 {
 	gm->lookingAtMap = false;
