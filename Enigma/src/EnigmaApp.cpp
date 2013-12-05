@@ -92,12 +92,6 @@ void EnigmaApp::setup()
 			inv.addItem(testItem);
 	}
 
-	//vector<string> args;
-	
-	//Command com(&outputDebugInfo(&gm, args), "Enigma::debug");
-	
-
-
 }
 
 void EnigmaApp::mouseDown( MouseEvent event )
@@ -130,13 +124,11 @@ void EnigmaApp::mouseDown( MouseEvent event )
 		int bufferSize = ((EVENT_WINDOW_HEIGHT - MENUBUTTONS_Y) - (MENUBUTTONS_HEIGHT * menuButtons.size())) / menuButtons.size(); 
 		for (int index = 0; index < menuButtons.size(); index++)
 		{
-			if (event.getX() > MENUBUTTONS_X  && 
-			event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
-			event.getY() > MENUBUTTONS_Y + index * (MENUBUTTONS_HEIGHT+bufferSize) && 
-			event.getY() < MENUBUTTONS_Y + index * (MENUBUTTONS_HEIGHT+bufferSize) + MENUBUTTONS_HEIGHT)
+			if (event.getX() > MENUBUTTONS_X  && event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
+				event.getY() > MENUBUTTONS_Y + index * MENUBUTTONS_HEIGHT  && event.getY() < MENUBUTTONS_Y + (index+1) * MENUBUTTONS_HEIGHT)
 			{
-				//menuButtons[index].getFunction();
 				con.output(">" + menuButtons[index].getAssociatedCommand());
+				gm.buttonClicked = index;
 				menuButtonClicked = index;
 				bool result = gm.parseAndExecuteCommand(menuButtons[index].getAssociatedCommand());
 				break;
@@ -201,8 +193,16 @@ void EnigmaApp::draw()
 	else
 		worldmap.getCurrentArea()->drawBackgroundImage();
 	gl::drawSolidRect(Rectf(windowNS::DIVIDER_X, windowNS::DIVIDER_Y, windowNS::DIVIDER_WIDTH + windowNS::DIVIDER_X, windowNS::DIVIDER_HEIGHT + windowNS::DIVIDER_Y));
-	for (int i = 0; i < menuButtons.size(); i++)
-		menuButtons[i].draw(i, menuButtons.size());
+	for (int i = 0; i < menuButtons.size(); i++) {
+		if (gm.buttonClicked == i) {
+			menuButtons[i].draw(i, menuButtons.size(), gm.buttonClicked);
+			if (gm.buttonFrames == 2) {gm.buttonClicked = -1; gm.buttonFrames = 0;}
+			else gm.buttonFrames++;
+
+			
+		}
+		else menuButtons[i].draw(i, menuButtons.size());
+	}
 	inv.draw();
 }
 

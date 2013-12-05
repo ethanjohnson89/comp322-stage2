@@ -23,7 +23,7 @@ class GameManager {
 	friend class EnigmaApp;
 
 public:
-	GameManager():lookingAtMap(true), processingCommand(false) {}
+	GameManager():lookingAtMap(true), processingCommand(false), buttonClicked(-1), buttonFrames(0){}
 	
 	Worldmap* getMap() {return &currentMap;}
 	void setMap(Worldmap wm){currentMap = wm;}
@@ -40,7 +40,8 @@ public:
 	CommandIterator getCommandIteratorEnd() { return commands.end(); }
 	int getCommandCount() { return commands.size(); }
 
-
+	int buttonClicked;
+	int buttonFrames;
 	/**************MULTIPLE INVENTORY SUPPORT*****************
 	void addMap(Worldmap wm) {maps.push_back(wm);}
 	Worldmap* getCurrentMap(){return &maps.at(mapIndex);}

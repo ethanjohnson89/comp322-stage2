@@ -22,7 +22,7 @@ private:
 public:
 	MenuButton() { }
 	void initialize(string command, gl::Texture image);
-	void draw(int index, int total);
+	void draw(int index, int total, int buttonClicked = -1);
 	string getAssociatedCommand() { return command; }
 	void setAssociatedCommand(string cmd) { command = cmd; }
 	void setImage(gl::Texture img){image = img;}
