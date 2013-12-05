@@ -23,7 +23,7 @@ class GameManager {
 	friend class EnigmaApp;
 
 public:
-	GameManager():lookingAtMap(true), processingCommand(false), buttonClicked(-1), buttonFrames(0){}
+	GameManager():lookingAtMap(true), processingCommand(false), buttonClicked(-1), buttonFrames(0){gl::enableAlphaBlending();gl::color( ColorA(1.0f, 1.0f, 1.0f, 1.0f) );}
 
 	Console con;
 	

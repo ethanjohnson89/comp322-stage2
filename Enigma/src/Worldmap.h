@@ -28,7 +28,7 @@ public:
 
 	void  draw();
 	int   mapClicked(int x, int y);
-	
+
 	EnigmaArea* getArea(int index) {return areas[index];}
 	EnigmaArea* getCurrentArea() {return getArea(areaIndex);}
 	int   getCurrentAreaIndex() {return areaIndex;}

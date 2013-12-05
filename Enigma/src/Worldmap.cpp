@@ -21,7 +21,7 @@ void Worldmap::addArea(EnigmaArea *newArea)
 }
 
 void Worldmap::draw()
-{
+{	
 	if (hasBackground)
 		gl::draw(background, EVENT_WINDOW_AREA);
 

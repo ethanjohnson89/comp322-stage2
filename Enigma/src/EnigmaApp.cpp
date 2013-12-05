@@ -101,15 +101,13 @@ void EnigmaApp::mouseDown( MouseEvent event )
 			{
 				if (newArea != oldArea)
 				{
-					gm.lookingAtMap = false;
 					worldmap.setCurrentArea(newArea);
 					gm.con.output("You have entered " + worldmap.getArea(newArea)->getName());
 				}
-				else
-				{
-					gm.lookingAtMap = false;
+				else					
 					gm.con.output("You are already in that area.");
-				}
+				
+				//gm.lookingAtMap = false;
 				worldmap.setCurrentArea(newArea);
 				gm.lookAtArea();
 			}
@@ -182,7 +180,7 @@ void EnigmaApp::update()
 	{
 		gm.con.output(gm.textToPrint);
 		gm.textToPrint.clear();
-		}
+	}
 }
 
 void EnigmaApp::draw()
