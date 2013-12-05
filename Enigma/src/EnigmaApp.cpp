@@ -1,6 +1,7 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "GameManager.h"
+#include "CommandFunctions.h"
 #include "globals.h"
 #include "EnigmaArea.h"
 #include "MenuButton.h"
@@ -46,21 +47,34 @@ void EnigmaApp::setup()
 	con.setup();
 	testArea.initialize("area", "this is an area", 0.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
 	testArea2.initialize("area2", "this is an area2", 200.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
+
 	worldmap.setBackgroundPicture(gl::Texture(loadImage(loadAsset("worldmap1.jpg"))));
 	worldmap.addArea(&testArea);
 	worldmap.addArea(&testArea2);
+
 	button1.setImage(gl::Texture(loadImage(loadAsset("button1.jpg"))));
 	button2.setImage(gl::Texture(loadImage(loadAsset("button2.jpg"))));
 	button3.setImage(gl::Texture(loadImage(loadAsset("button3.jpg"))));
 	button4.setImage(gl::Texture(loadImage(loadAsset("button4.jpg"))));
-	button1.setCommandString("button1 clicked");
-	button2.setCommandString("button2 clicked");
-	button3.setCommandString("button3 clicked");
-	button4.setCommandString("button4 clicked");
+	//button1.setFunction(lookAtMap);
+	//button1.setCommandString("Looking at map...");
+	//button2.setCommandString("button2 clicked");
+	//button3.setCommandString("button3 clicked");
+	//button4.setCommandString("button4 clicked");
+	button1.setAssociatedCommand("map");
+	button2.setAssociatedCommand("dummy2");
+	button3.setAssociatedCommand("dummy3");
+	button4.setAssociatedCommand("dummy4");
 	menuButtons.push_back(button1);
 	menuButtons.push_back(button2);
 	menuButtons.push_back(button3);
 	menuButtons.push_back(button4);
+
+	gm.addCommand(Command(lookAtMap, "map"));
+	gm.addCommand(Command(dummyCommand, "dummy2"));
+	gm.addCommand(Command(dummyCommand, "dummy3"));
+	gm.addCommand(Command(dummyCommand, "dummy4"));
+
 	con.output("pgup / pgdn to scroll inventory.");
 	con.output(" ");
 	menuButtonClicked = -1;
@@ -121,8 +135,9 @@ void EnigmaApp::mouseDown( MouseEvent event )
 			event.getY() < MENUBUTTONS_Y + (index+1) * MENUBUTTONS_HEIGHT)
 			{
 				//menuButtons[index].getFunction();
-				con.output(menuButtons[index].getCommandString());
+				con.output(menuButtons[index].getAssociatedCommand());
 				menuButtonClicked = index;
+				gm.parseAndExecuteCommand(menuButtons[index].getAssociatedCommand());
 				break;
 			}
 		}

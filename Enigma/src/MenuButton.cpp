@@ -1,15 +1,9 @@
 #include "MenuButton.h"
 
-MenuButton::MenuButton()
+void MenuButton::initialize(string command, gl::Texture image)
 {
-	commandString = "";
-}
-
-void MenuButton::initialize(CommandFunction function, string commandString, gl::Texture backgroundImage)
-{
-	MenuButton::function = function;
-	MenuButton::commandString = commandString;
-	image = backgroundImage;
+	MenuButton::command = command;
+	MenuButton::image = image;
 }
 
 void MenuButton::draw(int index)

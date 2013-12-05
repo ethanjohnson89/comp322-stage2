@@ -115,6 +115,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\src\Command.h" />
+    <ClInclude Include="..\src\CommandFunctions.h" />
     <ClInclude Include="..\src\console.h" />
     <ClInclude Include="..\src\EnigmaArea.h" />
     <ClInclude Include="..\src\ExceptionClasses.h" />
