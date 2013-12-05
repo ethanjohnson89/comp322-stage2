@@ -80,7 +80,7 @@ void EnigmaApp::setup()
 
 	gm.setInventory(&inv);
 	inv.setup();
-	testItem.setDescription("testitem desc");
+	testItem.setDescription("WOOOOOO THIS IS ITEM A YEAHHH!!!!!!!!");
 	testItem.setName("itemA");
 	inv.addItem(testItem);
 	inv.addItem(testItem);
@@ -93,6 +93,7 @@ void EnigmaApp::setup()
 		stringstream foo;
 		foo << "item" << (char)(i + 0x41);
 		testItem.setName(foo.str());
+		testItem.setDescription("Hey this is item " + testItem.getName()); 
 		for (int x = 0; x < rand() % 10; x++)
 			inv.addItem(testItem);
 	}
@@ -115,7 +116,6 @@ void EnigmaApp::mouseDown( MouseEvent event )
 				else					
 					gm.con.output("You are already in that area.");
 				
-				//gm.lookingAtMap = false;
 				worldmap.setCurrentArea(newArea);
 				gm.lookAtArea();
 			}
