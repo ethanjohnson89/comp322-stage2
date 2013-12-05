@@ -88,7 +88,7 @@ void EnigmaApp::setup()
 
 	gm.setInventory(&inv);
 	inv.setup();
-	testItem.setDescription("WOOOOOO THIS IS ITEM A YEAHHH!!!!!!!!");
+	testItem.setDescription("WOOOOOO THIS IS ITEM_A YEAHHH!!!!!!!!");
 	testItem.setName("itemA");
 	inv.addItem(testItem);
 	inv.addItem(testItem);
