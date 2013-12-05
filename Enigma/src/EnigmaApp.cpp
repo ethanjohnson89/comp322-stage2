@@ -59,8 +59,7 @@ void EnigmaApp::setup()
 	button4.setImage(gl::Texture(loadImage(loadAsset("button4.jpg"))));
 	
 	button1.setAssociatedCommand("map");
-	button1.setAssociatedCommand("help");
-	button2.setAssociatedCommand("dummy2");
+	button2.setAssociatedCommand("help");
 	button3.setAssociatedCommand("dummy3");
 	button4.setAssociatedCommand("dummy4");
 	menuButtons.push_back(button1);
