@@ -81,14 +81,17 @@ void EnigmaApp::setup()
 	gm.setInventory(&inv);
 	inv.setup();
 	testItem.setDescription("testitem desc");
-	testItem.setName("test itemA");
+	testItem.setName("itemA");
 	inv.addItem(testItem);
 	inv.addItem(testItem);
+	inv.addItem(testItem);
+	testItem.setName("Wooden Mallet");
+	testItem.setDescription("This item is 123430932 coins. Smack 'em dead, Willis.");
 	inv.addItem(testItem);
 	for (int i = 5; i < 30; i++)
 	{
 		stringstream foo;
-		foo << "test item" << (char)(i + 0x41);
+		foo << "item" << (char)(i + 0x41);
 		testItem.setName(foo.str());
 		for (int x = 0; x < rand() % 10; x++)
 			inv.addItem(testItem);
