@@ -6,6 +6,7 @@
 #include "EnigmaArea.h"
 #include "MenuButton.h"
 #include <cstdlib>
+#include <string> // for using getline() on a stringstream
 
 using namespace ci;
 using namespace ci::app;
@@ -71,11 +72,14 @@ void EnigmaApp::setup()
 	gm.addCommand(Command(dummyCommand, "dummy3"));
 	gm.addCommand(Command(dummyCommand, "dummy4"));
 	gm.addCommand(Command(goToArea, "go"));
+	gm.addCommand(Command(examineItem, "examine"));
 
 	gm.con.output(" ");
+
+	gm.setInventory(&inv);
+	inv.setup();
 	testItem.setDescription("testitem desc");
 	testItem.setName("test itemA");
-	inv.setup();
 	inv.addItem(testItem);
 	inv.addItem(testItem);
 	inv.addItem(testItem);
@@ -175,11 +179,10 @@ void EnigmaApp::keyDown( KeyEvent event )
 
 void EnigmaApp::update()
 {
-	if(gm.textToPrint.length() > 0)
-	{
-		gm.con.output(gm.textToPrint);
-		gm.textToPrint.clear();
-	}
+	string line;
+	while(std::getline(gm.textToPrint, line))
+		gm.con.output(line);
+	gm.textToPrint.clear();
 }
 
 void EnigmaApp::draw()

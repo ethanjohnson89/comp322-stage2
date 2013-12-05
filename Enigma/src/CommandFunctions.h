@@ -40,5 +40,20 @@ string goToArea(GameManager *gm, vector<string> args)
 	return "";
 }
 
+string examineItem(GameManager *gm, vector<string> args)
+{
+	string itemName = args[0];
+	for(int i = 1; i < args.size(); i++)
+	{
+		itemName += " ";
+		itemName += args[i];
+	}
+
+	string examineResult = gm->getInventory()->examineItem(itemName);
+	gm->printText(examineResult);
+
+	return "";
+}
+
 
 #endif

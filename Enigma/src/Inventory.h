@@ -28,6 +28,7 @@ public:
 	int addItem(Item item);
 	int deleteItem(Item item);
 	vector<string> getAllItems();
+	string examineItem(string itemName);
 	int getScrollIndex(){return scrollIndex;}
 	void incrementScrollIndex();
 	void decrementScrollIndex();

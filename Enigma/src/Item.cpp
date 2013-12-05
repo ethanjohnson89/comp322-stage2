@@ -7,8 +7,8 @@ Item::Item(string name, string description) {
 	Item::description = description;
 }
 
-string Item::examine() {
+string Item::examine() const {
 
-	return "ITEM NAME: \n"+name+"\n DESCRIPTION: \n"+description;
+	return " ITEM NAME: \n"+name+"\n DESCRIPTION: \n"+description;
 	
 }

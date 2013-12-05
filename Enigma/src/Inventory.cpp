@@ -65,6 +65,15 @@ vector<string> Inventory::getAllItems() {
 	return inventory;
 }
 
+string Inventory::examineItem(string itemName)
+{
+	auto itemInInventory = items.find(Item(itemName, "")); // note that the description doesn't matter here since Item::operator== compares based only on name
+	if(itemInInventory != items.end())
+		return itemInInventory->first.examine();
+	else
+		return "You don't have one of those!";
+}
+
 void Inventory::render() {
 
 	vector<string> items = getAllItems();

@@ -16,7 +16,7 @@ public:
 
 	Item();
 	Item(string name, string description);
-	string examine();
+	string examine() const;
 	
 	//setters and getters
 	string getName() { return name; }

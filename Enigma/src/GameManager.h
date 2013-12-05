@@ -11,11 +11,13 @@ class Command;
 #include "Command.h"
 
 #include <string>
+#include <sstream>
 #include <map>
 #include <boost/tokenizer.hpp>
 #include <boost/thread/thread.hpp>
 
 using std::string;
+using std::stringstream;
 using std::map;
 
 class GameManager {
@@ -32,8 +34,8 @@ public:
 	void lookAtMap(){lookingAtMap = true;}
 	void lookAtArea(){lookingAtMap = false;}
 	
-	Inventory* getInventory() {return &inventory;}
-	void setInventory(Inventory inv) {inventory = inv;}
+	Inventory* getInventory() {return inventory;}
+	void setInventory(Inventory *inv) {inventory = inv;}
 	
 	typedef std::map<std::string,Command>::iterator CommandIterator;
 	Command getCommand(string cmdName); //Throws a commandNotFoundException
@@ -46,17 +48,17 @@ public:
 	int buttonFrames;
 	bool lookingAtMap;
 
-	void printText(string s) { textToPrint += s; }
+	void printText(string s) { textToPrint << s; }
 
 private:
-	Inventory inventory;
+	Inventory *inventory;
 	Worldmap *currentMap;
 	map<string,Command> commands;
 	bool parseAndExecuteCommand(string commandLine); // returns true if the command function thread has been successfully spun off, false otherwise (happens if another command is already running)
 	bool processingCommand;
 	boost::thread activeCommandThread;
 	friend void threadLauncher(CommandFunction function, GameManager *gm, vector<string> args); // helper function for launching commands
-	string textToPrint;
+	stringstream textToPrint;
 };
 
 #endif
