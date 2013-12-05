@@ -39,6 +39,11 @@ string help(GameManager *gm, vector<string> args)
 
 string goToArea(GameManager *gm, vector<string> args)
 {
+	if(args.empty())
+	{
+		gm->printText("It looks like you're going nowhere.");
+		return "";
+	}
 	std::transform(args[0].begin(), args[0].end(), args[0].begin(), ::tolower);
 
 	Worldmap *currentMap = gm->getMap();
@@ -70,6 +75,11 @@ string goToArea(GameManager *gm, vector<string> args)
 
 string examineItem(GameManager *gm, vector<string> args)
 {
+	if(args.empty())
+	{
+		gm->printText("You stand and contemplate the existential angst of examining nothing.");
+		return "";
+	}
 	string itemName = args[0];
 	for(unsigned int i = 1; i < args.size(); i++)
 	{
