@@ -195,7 +195,7 @@ void EnigmaApp::draw()
 		worldmap.getCurrentArea()->drawBackgroundImage();
 	gl::drawSolidRect(Rectf(windowNS::DIVIDER_X, windowNS::DIVIDER_Y, windowNS::DIVIDER_WIDTH + windowNS::DIVIDER_X, windowNS::DIVIDER_HEIGHT + windowNS::DIVIDER_Y));
 	for (int i = 0; i < menuButtons.size(); i++)
-		menuButtons[i].draw(i);
+		menuButtons[i].draw(i, menuButtons.size());
 	inv.draw();
 }
 
