@@ -61,7 +61,6 @@ void EnigmaApp::setup()
 	menuButtons.push_back(button2);
 	menuButtons.push_back(button3);
 	menuButtons.push_back(button4);
-	con.output("--- Welcome to the Enigma engine. ---");
 	con.output("pgup / pgdn to scroll inventory.");
 	con.output(" ");
 	menuButtonClicked = -1;
