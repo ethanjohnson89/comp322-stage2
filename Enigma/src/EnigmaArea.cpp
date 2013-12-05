@@ -13,7 +13,8 @@ void EnigmaArea::initialize(string name, string description, float x, float y, g
 
 void EnigmaArea::drawThumbnail() {
 	Vec2f position2 = position + Vec2f(EVENT_WINDOW_X, EVENT_WINDOW_Y);
-	gl::draw(thumbnailImage, position2);
+	Area position3 = Area(position2.x, position2.y, position2.x + AREA_WIDTH, position2.y + AREA_HEIGHT); 
+	gl::draw(thumbnailImage, position3);
 }
 
 void EnigmaArea::drawBackgroundImage() {
