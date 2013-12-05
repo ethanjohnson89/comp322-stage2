@@ -59,8 +59,8 @@ namespace windowNS
 
 	static const string INVENTORY_FONT = CONSOLE_FONT;
 	static const int INVENTORY_FONT_SIZE = CONSOLE_FONT_SIZE;
-	static const ColorA INVENTORY_TEXT_COLOR = CONSOLE_TEXT_COLOR;
-	static const ColorA INVENTORY_BACK_COLOR = CONSOLE_BACK_COLOR;
+	static const ColorA INVENTORY_TEXT_COLOR = ColorA(0.0f, 0.8f, 0.0f, 1.0f);
+	static const ColorA INVENTORY_BACK_COLOR = ColorA(0.8f, 0.8f, 0.8f, 1.0f); //CONSOLE_BACK_COLOR;
 
 
 }
