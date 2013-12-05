@@ -64,5 +64,9 @@ string examineItem(GameManager *gm, vector<string> args)
 	return "";
 }
 
+string exit(GameManager *gm, vector<string> args)
+{
+	exit(0);
+}
 
 #endif

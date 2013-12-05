@@ -25,13 +25,13 @@ private:
 	Item testItem;
 	Inventory inv;
 public:
-	void outputDebugInfo(GameManager*, vector<string>);
-	void setup();
-	void prepareSettings(Settings *settings);
-	void mouseDown( MouseEvent event );	
-	void keyDown( KeyEvent event );
-	void update();
-	void draw();
+	virtual void outputDebugInfo(GameManager*, vector<string>);
+	virtual void setup();
+	virtual void prepareSettings(Settings *settings);
+	virtual void mouseDown( MouseEvent event );	
+	virtual void keyDown( KeyEvent event );
+	virtual void update();
+	virtual void draw();
 };
 
 void EnigmaApp::prepareSettings( Settings *settings ){
@@ -61,7 +61,7 @@ void EnigmaApp::setup()
 	button1.setAssociatedCommand("map");
 	button2.setAssociatedCommand("help");
 	button3.setAssociatedCommand("dummy3");
-	button4.setAssociatedCommand("dummy4");
+	button4.setAssociatedCommand("exit");
 	menuButtons.push_back(button1);
 	menuButtons.push_back(button2);
 	menuButtons.push_back(button3);
@@ -69,6 +69,7 @@ void EnigmaApp::setup()
 
 	gm.addCommand(Command(lookAtMap, "map"));
 	gm.addCommand(Command(help, "help"));
+	gm.addCommand(Command(exit, "exit"));
 	gm.addCommand(Command(dummyCommand, "dummy2"));
 	gm.addCommand(Command(dummyCommand, "dummy3"));
 	gm.addCommand(Command(dummyCommand, "dummy4"));
