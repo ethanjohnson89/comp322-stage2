@@ -187,7 +187,7 @@ void Console::adjustMaxLines()
 
 void Console::setFontSize(int a)
 {
-	fontSize = a;
+	fontSize = a; // WAHOO!! YEAH!!! CHANGE THE FONT SIZE!!! WOOOOOOOOOOOO!!!!!!! ALRIGHT!!! 3 CHEERS FOR FONT SIZE! HIP HIP HOORAY!! HIP HIP HOORAY!! HIP HIP HOORAY!! GO TEAM GO! SCORE THE GOAL WITH THE BALL AND GET POINTS FOR YOUR TEAM
 	mFont = Font( font, static_cast<float>(fontSize)); 
 	inputLine = inputLinePrefix; 
 	adjustMaxLines();
