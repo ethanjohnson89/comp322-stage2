@@ -72,7 +72,6 @@ void EnigmaApp::setup()
 	gm.addCommand(Command(dummyCommand, "dummy4"));
 	gm.addCommand(Command(goToArea, "go"));
 
-	gm.con.output("pgup / pgdn to scroll inventory.");
 	gm.con.output(" ");
 	testItem.setDescription("testitem desc");
 	testItem.setName("test itemA");
@@ -168,9 +167,9 @@ void EnigmaApp::keyDown( KeyEvent event )
 		gm.con.backspace();
 	else if (event.getChar() >= ' ' && event.getChar() < '~')
 		gm.con.sendChar(event.getChar());
-	else if (event.getCode() == KeyEvent::KEY_PAGEUP)
+	else if (event.getCode() == KeyEvent::KEY_UP)
 		inv.decrementScrollIndex();
-	else if (event.getCode() == KeyEvent::KEY_PAGEDOWN)
+	else if (event.getCode() == KeyEvent::KEY_DOWN)
 		inv.incrementScrollIndex();
 }
 
