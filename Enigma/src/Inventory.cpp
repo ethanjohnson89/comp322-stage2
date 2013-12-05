@@ -78,7 +78,7 @@ void Inventory::render() {
 
 	vector<string> items = getAllItems();
 	int maxLines = getMaxLines();
-	string txt = "INVENTORY:\n";
+	string txt = "_____INVENTORY_____\n";
 	for (unsigned int i = 0; i+scrollIndex < items.size() && i < maxLines; i++)
 	{
 		txt += items[i+scrollIndex];

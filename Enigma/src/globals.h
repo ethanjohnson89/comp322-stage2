@@ -27,7 +27,7 @@ namespace windowNS
 
 	static const int CONSOLE_X = 5;
 	static const int CONSOLE_Y = EVENT_WINDOW_Y + EVENT_WINDOW_HEIGHT + 5;
-	static const int CONSOLE_WIDTH = WINDOW_WIDTH - CONSOLE_X - 200;
+	static const int CONSOLE_WIDTH = WINDOW_WIDTH - CONSOLE_X - 210;
 	static const int CONSOLE_HEIGHT = WINDOW_HEIGHT - CONSOLE_Y - 5;
 
 	static const int AREA_HEIGHT = 80;

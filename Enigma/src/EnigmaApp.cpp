@@ -45,7 +45,7 @@ void EnigmaApp::setup()
 {
 
 	gm.con.setup();
-	testArea.initialize("Forest", "hello friend this is the forest", 0.0f, 0.0f, gl::Texture(loadImage(loadAsset("forest.jpg"))), gl::Texture(loadImage(loadAsset("forest.jpg"))));
+	testArea.initialize("Forest", "hello friend this is the forest", 80.0f, 100.0f, gl::Texture(loadImage(loadAsset("forest.jpg"))), gl::Texture(loadImage(loadAsset("forest.jpg"))));
 	testArea2.initialize("Beach", "hey this is the beach", 200.0f, 100.0f, gl::Texture(loadImage(loadAsset("beach.jpg"))), gl::Texture(loadImage(loadAsset("beach.jpg"))));
 
 	gm.setMap(&worldmap);
