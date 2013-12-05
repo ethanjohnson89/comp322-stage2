@@ -23,7 +23,7 @@ class GameManager {
 	friend class EnigmaApp;
 
 public:
-	GameManager():lookingAtMap(false), processingCommand(false) {}
+	GameManager():lookingAtMap(true), processingCommand(false) {}
 	
 	Worldmap* getMap() {return &currentMap;}
 	void setMap(Worldmap wm){currentMap = wm;}
@@ -37,6 +37,7 @@ public:
 	CommandIterator getCommandIteratorBegin() { return commands.begin(); }
 	CommandIterator getCommandIteratorEnd() { return commands.end(); }
 	int getCommandCount() { return commands.size(); }
+
 
 	/**************MULTIPLE INVENTORY SUPPORT*****************
 	void addMap(Worldmap wm) {maps.push_back(wm);}

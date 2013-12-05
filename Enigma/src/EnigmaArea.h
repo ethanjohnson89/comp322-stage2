@@ -35,6 +35,7 @@ public:
 	void setDescription(string description) { EnigmaArea::description = description; }
 	Vec2f getPosition() { return position; }
 	void setPosition(Vec2f pos) { position = pos; }
+	gl::Texture getBackgroundImage() { return backgroundImage; }
 };
 
 #endif

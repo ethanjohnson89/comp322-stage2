@@ -106,6 +106,8 @@ void EnigmaApp::mouseDown( MouseEvent event )
 				{
 					con.output("You are already in that area.");
 				}
+				worldmap.setCurrentArea(newArea);
+				gm.lookingAtMap = false;
 			}
 		}
 	}
@@ -172,7 +174,10 @@ void EnigmaApp::draw()
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) );  
 	con.draw();
-	worldmap.draw();
+	if(gm.lookingAtMap)
+		worldmap.draw();
+	else
+		worldmap.getCurrentArea()->drawBackgroundImage();
 	gl::drawSolidRect(Rectf(windowNS::DIVIDER_X, windowNS::DIVIDER_Y, windowNS::DIVIDER_WIDTH + windowNS::DIVIDER_X, windowNS::DIVIDER_HEIGHT + windowNS::DIVIDER_Y));
 	for (int i = 0; i < menuButtons.size(); i++)
 		menuButtons[i].draw(i);

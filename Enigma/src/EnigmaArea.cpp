@@ -18,5 +18,6 @@ void EnigmaArea::drawThumbnail() {
 
 void EnigmaArea::drawBackgroundImage() {
 
-	gl::draw(backgroundImage, Vec2f(EVENT_WINDOW_X, EVENT_WINDOW_Y)); 
+
+	gl::draw(backgroundImage, EVENT_WINDOW_AREA);//Vec2f(EVENT_WINDOW_X, EVENT_WINDOW_Y)); 
 }

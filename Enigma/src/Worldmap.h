@@ -23,8 +23,6 @@ private:
 	gl::Texture background;
 	bool hasBackground;
 
-
-
 public:
 	Worldmap();
 
@@ -38,7 +36,6 @@ public:
 	void  setDefaultArea(int a) {defaultArea = a;}
 	void  setAreaToDefault() {areaIndex = defaultArea;}
 	void  setBackgroundPicture(gl::Texture back) {background = back; hasBackground = true;}
-
 	void  setCurrentArea(int index);
 	void  addArea(EnigmaArea *newArea);
 };
