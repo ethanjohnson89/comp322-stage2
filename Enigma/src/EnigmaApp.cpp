@@ -124,8 +124,10 @@ void EnigmaApp::mouseDown( MouseEvent event )
 		int bufferSize = ((EVENT_WINDOW_HEIGHT - MENUBUTTONS_Y) - (MENUBUTTONS_HEIGHT * menuButtons.size())) / menuButtons.size(); 
 		for (int index = 0; index < menuButtons.size(); index++)
 		{
-			if (event.getX() > MENUBUTTONS_X  && event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
-				event.getY() > MENUBUTTONS_Y + index * MENUBUTTONS_HEIGHT  && event.getY() < MENUBUTTONS_Y + (index+1) * MENUBUTTONS_HEIGHT)
+			if (event.getX() > MENUBUTTONS_X  && 
+				event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
+				event.getY() > MENUBUTTONS_Y + index * (MENUBUTTONS_HEIGHT+bufferSize) && 
+				event.getY() < MENUBUTTONS_Y + index * (MENUBUTTONS_HEIGHT+bufferSize) + MENUBUTTONS_HEIGHT)
 			{
 				con.output(">" + menuButtons[index].getAssociatedCommand());
 				gm.buttonClicked = index;
