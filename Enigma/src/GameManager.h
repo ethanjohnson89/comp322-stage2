@@ -24,9 +24,11 @@ class GameManager {
 
 public:
 	GameManager():lookingAtMap(true), processingCommand(false), buttonClicked(-1), buttonFrames(0){}
+
+	Console con;
 	
-	Worldmap* getMap() {return &currentMap;}
-	void setMap(Worldmap wm){currentMap = wm;}
+	Worldmap* getMap() {return currentMap;}
+	void setMap(Worldmap *wm){currentMap = wm;}
 	void lookAtMap(){lookingAtMap = true;}
 	void lookAtArea(){lookingAtMap = false;}
 	
@@ -59,15 +61,17 @@ public:
 
 	bool lookingAtMap;
 
-private:
+	void printText(string s) { textToPrint += s; }
 
+private:
 	Inventory inventory;
-	Worldmap currentMap;
+	Worldmap *currentMap;
 	map<string,Command> commands;
 	bool parseAndExecuteCommand(string commandLine); // returns true if the command function thread has been successfully spun off, false otherwise (happens if another command is already running)
 	bool processingCommand;
 	boost::thread activeCommandThread;
 	friend void threadLauncher(CommandFunction function, GameManager *gm, vector<string> args); // helper function for launching commands
+	string textToPrint;
 };
 
 #endif

@@ -23,7 +23,6 @@ private:
 	MenuButton button1, button2, button3, button4;
 	Item testItem;
 	Inventory inv;
-	int menuButtonClicked;
 public:
 	void outputDebugInfo(GameManager*, vector<string>);
 	void setup();
@@ -44,10 +43,11 @@ void EnigmaApp::prepareSettings( Settings *settings ){
 void EnigmaApp::setup()
 {
 
-	con.setup();
+	gm.con.setup();
 	testArea.initialize("area", "this is an area", 0.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
 	testArea2.initialize("area2", "this is an area2", 200.0f, 0.0f, gl::Texture(loadImage(loadAsset("area1.jpg"))), gl::Texture(loadImage(loadAsset("area1.jpg"))));
 
+	gm.setMap(&worldmap);
 	worldmap.setBackgroundPicture(gl::Texture(loadImage(loadAsset("worldmap1.jpg"))));
 	worldmap.addArea(&testArea);
 	worldmap.addArea(&testArea2);
@@ -74,10 +74,10 @@ void EnigmaApp::setup()
 	gm.addCommand(Command(dummyCommand, "dummy2"));
 	gm.addCommand(Command(dummyCommand, "dummy3"));
 	gm.addCommand(Command(dummyCommand, "dummy4"));
+	gm.addCommand(Command(goToArea, "go"));
 
-	con.output("pgup / pgdn to scroll inventory.");
-	con.output(" ");
-	menuButtonClicked = -1;
+	gm.con.output("pgup / pgdn to scroll inventory.");
+	gm.con.output(" ");
 	testItem.setId(1);
 	testItem.setDescription("testitem desc");
 	testItem.setName("test item");
@@ -91,13 +91,10 @@ void EnigmaApp::setup()
 		for (int x = 0; x < i; x++)
 			inv.addItem(testItem);
 	}
-
 }
 
 void EnigmaApp::mouseDown( MouseEvent event )
 {
-	menuButtonClicked = -1;
-
 	if (eventAreaClicked(event)) {
 		if (mapActive)
 		{
@@ -108,11 +105,11 @@ void EnigmaApp::mouseDown( MouseEvent event )
 				if (newArea != oldArea)
 				{
 					worldmap.setCurrentArea(newArea);
-					con.output("You have entered " + worldmap.getArea(newArea)->getName());
+					gm.con.output("You have entered " + worldmap.getArea(newArea)->getName());
 				}
 				else
 				{
-					con.output("You are already in that area.");
+					gm.con.output("You are already in that area.");
 				}
 				worldmap.setCurrentArea(newArea);
 				gm.lookAtArea();
@@ -129,9 +126,8 @@ void EnigmaApp::mouseDown( MouseEvent event )
 				event.getY() > MENUBUTTONS_Y + index * (MENUBUTTONS_HEIGHT+bufferSize) && 
 				event.getY() < MENUBUTTONS_Y + index * (MENUBUTTONS_HEIGHT+bufferSize) + MENUBUTTONS_HEIGHT)
 			{
-				con.output(">" + menuButtons[index].getAssociatedCommand());
 				gm.buttonClicked = index;
-				menuButtonClicked = index;
+				gm.con.output(">" + menuButtons[index].getAssociatedCommand());
 				bool result = gm.parseAndExecuteCommand(menuButtons[index].getAssociatedCommand());
 				break;
 			}
@@ -161,20 +157,20 @@ void EnigmaApp::keyDown( KeyEvent event )
 {
 	if( event.getCode() == KeyEvent::KEY_RETURN )
 	{
-		string cmdString = con.sendLine();
+		string cmdString = gm.con.sendLine();
 		try {
 			gm.parseAndExecuteCommand(cmdString); // currently not checking the return value from this - we should give some kind of feedback to the user "hey, there's another command still running!" if it returns false
 												  // also, we are not catching the CommandNotFoundException if the command is invalid - this is very important!
 		}
 		catch (CommandNotFoundException) {
-			con.output("Command not recognized.");
+			gm.con.output("Command not recognized.");
 		
 		}
 	}
 	else if (event.getCode() == KeyEvent::KEY_BACKSPACE)
-		con.backspace();
+		gm.con.backspace();
 	else if (event.getChar() >= ' ' && event.getChar() < '~')
-		con.sendChar(event.getChar());
+		gm.con.sendChar(event.getChar());
 	else if (event.getCode() == KeyEvent::KEY_PAGEUP)
 		inv.decrementScrollIndex();
 	else if (event.getCode() == KeyEvent::KEY_PAGEDOWN)
@@ -183,13 +179,18 @@ void EnigmaApp::keyDown( KeyEvent event )
 
 void EnigmaApp::update()
 {
+	if(gm.textToPrint.length() > 0)
+	{
+		gm.con.output(gm.textToPrint);
+		gm.textToPrint.clear();
+		}
 }
 
 void EnigmaApp::draw()
 {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) );  
-	con.draw();
+	gm.con.draw();
 	if(gm.lookingAtMap)
 		worldmap.draw();
 	else
@@ -209,7 +210,7 @@ void EnigmaApp::draw()
 }
 
 void EnigmaApp::outputDebugInfo(GameManager* gm, vector<string> args) {
-	con.output("Debug info goes here.");
+	gm->con.output("Debug info goes here.");
 }
 
 CINDER_APP_NATIVE( EnigmaApp, RendererGl )

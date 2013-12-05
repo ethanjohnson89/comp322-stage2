@@ -21,7 +21,23 @@ string dummyCommand(GameManager *gm, vector<string> args)
 	return "";
 }
 
+string goToArea(GameManager *gm, vector<string> args)
+{
+	Worldmap *currentMap = gm->getMap();
+	int targetAreaIndex = 0;
+	for(; targetAreaIndex < currentMap->getAreaCount(); targetAreaIndex++)
+		if(currentMap->getArea(targetAreaIndex)->getName() == args[0])
+			break;
+	if(targetAreaIndex >= currentMap->getAreaCount())
+	{
+		gm->printText("Sorry, I don't know of that place!");
+		return "";
+	}
 
+	currentMap->setCurrentArea(targetAreaIndex);
+	gm->lookAtArea();
+	return "";
+}
 
 
 #endif
