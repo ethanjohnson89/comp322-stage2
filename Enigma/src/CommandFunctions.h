@@ -23,6 +23,7 @@ string dummyCommand(GameManager *gm, vector<string> args)
 
 string goToArea(GameManager *gm, vector<string> args)
 {
+	gm->lookingAtMap = false;
 	Worldmap *currentMap = gm->getMap();
 	int targetAreaIndex = 0;
 	for(; targetAreaIndex < currentMap->getAreaCount(); targetAreaIndex++)

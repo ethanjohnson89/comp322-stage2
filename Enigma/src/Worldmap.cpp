@@ -1,5 +1,5 @@
 
-#include "worldmap.h"
+#include "Worldmap.h"
 
 Worldmap::Worldmap()
 {

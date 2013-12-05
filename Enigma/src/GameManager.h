@@ -1,11 +1,11 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
-#include "Worldmap.h"
 #include "Inventory.h"
 #include "globals.h"
 #include "EnigmaArea.h"
 #include "console.h"
 #include "ExceptionClasses.h"
+#include "Worldmap.h"
 
 class Command;
 #include "Command.h"
@@ -44,21 +44,6 @@ public:
 
 	int buttonClicked;
 	int buttonFrames;
-	/**************MULTIPLE INVENTORY SUPPORT*****************
-	void addMap(Worldmap wm) {maps.push_back(wm);}
-	Worldmap* getCurrentMap(){return &maps.at(mapIndex);}
-	Worldmap* getMap(int index){return &maps.at(index);} //Throws invalidIndexException
-	int getCurrentMapIndex(){return mapIndex;}
-	void setCurrentMap(int index){mapIndex = index;} //Throws invalidIndexException
-	Worldmap* replaceMap(int index, Worldmap* newmap){Worldmap* temp = &maps.at(index);maps.at(index) = *newmap;return temp;} //Returns replaced map, throws invalidIndexException
-	int getMapCount(){return maps.size();}
-	**********************************************************/
-
-	//MenuButton* getMenuButton(int index);
-	//void addMenuButton(MenuButton* newMenuButton);
-	//MenuButton* replaceMenuButton(int index, MenuButton* newMenuButton);
-	//int getMenuButtonCount();
-
 	bool lookingAtMap;
 
 	void printText(string s) { textToPrint += s; }

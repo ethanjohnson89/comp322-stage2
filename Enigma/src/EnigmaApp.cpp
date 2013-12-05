@@ -15,7 +15,6 @@ private:
 	GameManager gm;
 	Console con;
 	Worldmap worldmap;
-	bool mapActive;
 	bool eventAreaClicked(MouseEvent event);
 	bool menuButtonAreaClicked(MouseEvent event);
 	EnigmaArea testArea, testArea2;
@@ -56,11 +55,7 @@ void EnigmaApp::setup()
 	button2.setImage(gl::Texture(loadImage(loadAsset("button2.jpg"))));
 	button3.setImage(gl::Texture(loadImage(loadAsset("button3.jpg"))));
 	button4.setImage(gl::Texture(loadImage(loadAsset("button4.jpg"))));
-	//button1.setFunction(lookAtMap);
-	//button1.setCommandString("Looking at map...");
-	//button2.setCommandString("button2 clicked");
-	//button3.setCommandString("button3 clicked");
-	//button4.setCommandString("button4 clicked");
+	
 	button1.setAssociatedCommand("map");
 	button2.setAssociatedCommand("dummy2");
 	button3.setAssociatedCommand("dummy3");
@@ -96,7 +91,7 @@ void EnigmaApp::setup()
 void EnigmaApp::mouseDown( MouseEvent event )
 {
 	if (eventAreaClicked(event)) {
-		if (mapActive)
+		if (gm.lookingAtMap)
 		{
 			int oldArea = worldmap.getCurrentAreaIndex();
 			int newArea = worldmap.mapClicked(event.getX(), event.getY());
@@ -104,11 +99,13 @@ void EnigmaApp::mouseDown( MouseEvent event )
 			{
 				if (newArea != oldArea)
 				{
+					gm.lookingAtMap = false;
 					worldmap.setCurrentArea(newArea);
 					gm.con.output("You have entered " + worldmap.getArea(newArea)->getName());
 				}
 				else
 				{
+					gm.lookingAtMap = false;
 					gm.con.output("You are already in that area.");
 				}
 				worldmap.setCurrentArea(newArea);
