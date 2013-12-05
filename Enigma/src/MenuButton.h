@@ -21,6 +21,7 @@ private:
 
 public:
 	MenuButton();
+	void initialize(CommandFunction function, string commandString, gl::Texture backgroundImage);
 	void draw(int index);
 	CommandFunction getFunction(){return function;}
 	void setFunction(CommandFunction f){function = f;}

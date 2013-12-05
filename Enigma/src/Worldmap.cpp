@@ -6,7 +6,6 @@ Worldmap::Worldmap()
 	areaIndex = 0;
 	defaultArea = 0;
 	hasBackground = false;
-	
 }
 
 
