@@ -15,12 +15,10 @@ private:
 public:
 
 	Item();
-	Item(int id, string name, string description);
+	Item(string name, string description);
 	string examine();
 	
 	//setters and getters
-	int getId() { return id; }
-	void setId(int id) { Item::id = id; }
 	string getName() { return name; }
 	void setName(string name) { Item::name = name; }
 	string getDescription() { return description; }
@@ -29,14 +27,18 @@ public:
 
 	//comparator for usage in STL map template
 	bool operator<( const Item& other) const
-      {
-          if ( id < other.id )
-          {
-              return true;
-          } else {
-			  return false;
-		  }
-      }
+    {
+		if(name < other.name)
+			return true;
+		return false;
+    }
+
+	bool operator==(const Item& other) const
+	{
+		if(name == other.name)
+			return true;
+		return false;
+	}
 
 };
 

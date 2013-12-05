@@ -2,8 +2,7 @@
 
 Item::Item() {}
 
-Item::Item(int id, string name, string description) {
-	Item::id = id;
+Item::Item(string name, string description) {
 	Item::name = name;
 	Item::description = description;
 }

@@ -5,6 +5,7 @@
 #include "globals.h"
 #include "EnigmaArea.h"
 #include "MenuButton.h"
+#include <cstdlib>
 
 using namespace ci;
 using namespace ci::app;
@@ -73,17 +74,18 @@ void EnigmaApp::setup()
 
 	gm.con.output("pgup / pgdn to scroll inventory.");
 	gm.con.output(" ");
-	testItem.setId(1);
 	testItem.setDescription("testitem desc");
-	testItem.setName("test item");
+	testItem.setName("test itemA");
 	inv.setup();
 	inv.addItem(testItem);
 	inv.addItem(testItem);
 	inv.addItem(testItem);
 	for (int i = 5; i < 30; i++)
 	{
-		testItem.setId(i);
-		for (int x = 0; x < i; x++)
+		stringstream foo;
+		foo << "test item" << (char)(i + 0x41);
+		testItem.setName(foo.str());
+		for (int x = 0; x < rand() % 10; x++)
 			inv.addItem(testItem);
 	}
 }
