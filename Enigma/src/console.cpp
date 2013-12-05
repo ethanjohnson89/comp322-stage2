@@ -10,7 +10,7 @@ Console::Console()
 {
 	width = CONSOLE_WIDTH;
 	height = CONSOLE_HEIGHT;
-	inputLinePrefix = "->";
+	inputLinePrefix = "-> ";
 	inputLine = inputLinePrefix;
 	lines.push_back(" ");
 	font = CONSOLE_FONT;

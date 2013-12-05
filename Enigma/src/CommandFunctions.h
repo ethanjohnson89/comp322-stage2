@@ -23,7 +23,10 @@ string dummyCommand(GameManager *gm, vector<string> args)
 
 string help(GameManager *gm, vector<string> args)
 {
-	gm->printText("Help: Up/Down arrows: scroll inventory");
+	gm->printText("\nKey Bindings:\n     Up/Down arrows: scroll inventory\n");
+	gm->printText("Commands:\n     Go *AreaName*:  Goes to a new area.\n\          -note: Area names are case sensitive!");
+	gm->printText("\n     Examine *itemName*:  Displays the item's name and description\n          -note: item names are case sensitive!");
+	gm->printText("\n     Exit");
 	return "";
 }
 
@@ -49,7 +52,7 @@ string goToArea(GameManager *gm, vector<string> args)
 string examineItem(GameManager *gm, vector<string> args)
 {
 	string itemName = args[0];
-	for(int i = 1; i < args.size(); i++)
+	for(unsigned int i = 1; i < args.size(); i++)
 	{
 		itemName += " ";
 		itemName += args[i];

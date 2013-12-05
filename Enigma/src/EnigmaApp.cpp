@@ -75,6 +75,7 @@ void EnigmaApp::setup()
 	gm.addCommand(Command(goToArea, "go"));
 	gm.addCommand(Command(examineItem, "examine"));
 
+	gm.con.output("  -- Welcome! Type \"Help\" for the help menu! --  ");
 	gm.con.output(" ");
 
 	gm.setInventory(&inv);
@@ -123,7 +124,7 @@ void EnigmaApp::mouseDown( MouseEvent event )
 	else if (menuButtonAreaClicked(event))
 	{
 		int bufferSize = ((EVENT_WINDOW_HEIGHT - MENUBUTTONS_Y) - (MENUBUTTONS_HEIGHT * menuButtons.size())) / (menuButtons.size() - 1); 
-		for (int index = 0; index < menuButtons.size(); index++)
+		for (unsigned int index = 0; index < menuButtons.size(); index++)
 		{
 			if (event.getX() > MENUBUTTONS_X  && 
 				event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
@@ -199,7 +200,7 @@ void EnigmaApp::draw()
 	else
 		worldmap.getCurrentArea()->drawBackgroundImage();
 	gl::drawSolidRect(Rectf(windowNS::DIVIDER_X, windowNS::DIVIDER_Y, windowNS::DIVIDER_WIDTH + windowNS::DIVIDER_X, windowNS::DIVIDER_HEIGHT + windowNS::DIVIDER_Y));
-	for (int i = 0; i < menuButtons.size(); i++) {
+	for (unsigned int i = 0; i < menuButtons.size(); i++) {
 		if (gm.buttonClicked == i) {
 			menuButtons[i].draw(i, menuButtons.size(), gm.buttonClicked);
 			if (gm.buttonFrames == 2) {gm.buttonClicked = -1; gm.buttonFrames = 0;}
