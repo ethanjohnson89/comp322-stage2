@@ -12,14 +12,18 @@ class Command;
 
 #include <string>
 #include <map>
+#include <boost/tokenizer.hpp>
+#include <boost/thread/thread.hpp>
 
 using std::string;
 using std::map;
 
 class GameManager {
 
+	friend class EnigmaApp;
+
 public:
-	GameManager():lookingAtMap(false){}
+	GameManager():lookingAtMap(false), processingCommand(false) {}
 	
 	Worldmap* getMap() {return &currentMap;}
 	void setMap(Worldmap wm){currentMap = wm;}
@@ -56,6 +60,9 @@ private:
 	Inventory inventory;
 	Worldmap currentMap;
 	map<string,Command> commands;
+	bool parseAndExecuteCommand(string commandLine); // returns true if the command function thread has been successfully spun off, false otherwise (happens if another command is already running)
+	bool processingCommand;
+	boost::thread activeCommandThread;
 };
 
 #endif

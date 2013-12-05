@@ -26,7 +26,7 @@ bool GameManager::parseAndExecuteCommand(string commandLine)
 		return false;
 
 	processingCommand = true;
-	activeCommandThread = boost::thread(cmd.getAssociatedFunction(), this, args);
+	activeCommandThread = boost::thread(*cmd.getAssociatedFunction(), this, args);
 
 	return true;
 }
