@@ -135,7 +135,7 @@ void EnigmaApp::mouseDown( MouseEvent event )
 			event.getY() < MENUBUTTONS_Y + (index+1) * MENUBUTTONS_HEIGHT)
 			{
 				//menuButtons[index].getFunction();
-				con.output(menuButtons[index].getAssociatedCommand());
+				con.output(">" + menuButtons[index].getAssociatedCommand());
 				menuButtonClicked = index;
 				bool result = gm.parseAndExecuteCommand(menuButtons[index].getAssociatedCommand());
 				break;

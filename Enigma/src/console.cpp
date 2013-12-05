@@ -113,7 +113,7 @@ string Console::sendLine()
 		for (unsigned int i = 0; i < inputLinePrefix.size(); i++)
 			inputLine.erase(it);
 
-		lines.push_back(inputLine);
+		lines.push_back(">" + inputLine);
 		sentLine = inputLine;
 		inputLine = inputLinePrefix;
 	}

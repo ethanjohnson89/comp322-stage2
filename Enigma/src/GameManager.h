@@ -66,6 +66,7 @@ private:
 	bool parseAndExecuteCommand(string commandLine); // returns true if the command function thread has been successfully spun off, false otherwise (happens if another command is already running)
 	bool processingCommand;
 	boost::thread activeCommandThread;
+	friend void threadLauncher(CommandFunction function, GameManager *gm, vector<string> args); // helper function for launching commands
 };
 
 #endif
