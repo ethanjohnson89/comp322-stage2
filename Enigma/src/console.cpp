@@ -13,10 +13,10 @@ Console::Console()
 	inputLinePrefix = ">";
 	inputLine = inputLinePrefix;
 	lines.push_back(" ");
-	font = "Consolas";
-	fontSize = 24;
-	textColor = ColorA(0.6f, 1.0f, 0.6f, 1.0f);
-	backColor = ColorA(0.35f, 0.35f, 0.35f, 1.0f);
+	font = CONSOLE_FONT;
+	fontSize = CONSOLE_FONT_SIZE;
+	textColor = CONSOLE_TEXT_COLOR;
+	backColor = CONSOLE_BACK_COLOR;
 	maxLines = 0;
 }
 
@@ -27,7 +27,7 @@ Console::Console()
 
 void Console::setup()
 {
-	mFont = Font( font, static_cast<float>(fontSize) );
+	mFont = Font( CONSOLE_FONT, static_cast<float>(CONSOLE_FONT_SIZE) );
 	width = CONSOLE_WIDTH;
 	height = CONSOLE_HEIGHT;
 	x = CONSOLE_X;
@@ -69,7 +69,6 @@ void Console::draw()
 {
 	gl::setMatricesWindow( getWindowSize() );
 	gl::enableAlphaBlending();
-	gl::clear( Color( 0, 0, 0 ) );
 	Vec2f pos(static_cast<float>(x), static_cast<float>(y));
 
 	if( mTextTexture )

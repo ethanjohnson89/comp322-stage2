@@ -33,8 +33,8 @@ private:
 	string inputLinePrefix;
 	string font;
 	int fontSize;
-	Color textColor;
-	Color backColor;
+	ColorA textColor;
+	ColorA backColor;
 
 	boost::mutex lineBufferMutex;
 
