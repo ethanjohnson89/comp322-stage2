@@ -118,7 +118,7 @@ void EnigmaApp::mouseDown( MouseEvent event )
 	}
 	else if (menuButtonAreaClicked(event))
 	{
-		int bufferSize = ((EVENT_WINDOW_HEIGHT - MENUBUTTONS_Y) - (MENUBUTTONS_HEIGHT * menuButtons.size())) / menuButtons.size(); 
+		int bufferSize = ((EVENT_WINDOW_HEIGHT - MENUBUTTONS_Y) - (MENUBUTTONS_HEIGHT * menuButtons.size())) / (menuButtons.size() - 1); 
 		for (int index = 0; index < menuButtons.size(); index++)
 		{
 			if (event.getX() > MENUBUTTONS_X  && 
@@ -150,7 +150,7 @@ bool EnigmaApp::menuButtonAreaClicked(MouseEvent event)
 		event.getX() > MENUBUTTONS_X && 
 		event.getX() < MENUBUTTONS_X + MENUBUTTONS_WIDTH &&	
 		event.getY() > MENUBUTTONS_Y && 
-		event.getY() < MENUBUTTONS_Y + menuButtons.size() * MENUBUTTONS_HEIGHT;
+		event.getY() < CONSOLE_Y;
 }
 
 void EnigmaApp::keyDown( KeyEvent event ) 
