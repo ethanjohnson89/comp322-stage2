@@ -14,6 +14,8 @@ bool GameManager::parseAndExecuteCommand(string commandLine)
 	boost::char_separator<char> sep(" ", "", boost::drop_empty_tokens);
 	boost::tokenizer<boost::char_separator<char> > tok(commandLine, sep);
 	auto token_iter = tok.begin();
+	if(token_iter == tok.end()) // trivial case - empty line or line containing only spaces
+		return true; // we'll consider this a successful execution since there's nothing to do
 	cmdName = *token_iter;
 	for(token_iter++; token_iter != tok.end(); token_iter++)
 		args.push_back(*token_iter);
