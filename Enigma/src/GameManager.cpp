@@ -19,7 +19,7 @@ bool GameManager::parseAndExecuteCommand(string commandLine)
 	cmdName = *token_iter;
 	for(token_iter++; token_iter != tok.end(); token_iter++)
 		args.push_back(*token_iter);
-
+	std::transform(cmdName.begin(), cmdName.end(), cmdName.begin(), ::tolower);
 	Command cmd = getCommand(cmdName);
 
 	// This function "shouldn't" be called when another function is already being executed (since the UI is designed to not let the user

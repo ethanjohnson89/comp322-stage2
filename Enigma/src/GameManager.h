@@ -13,6 +13,7 @@ class Command;
 #include <string>
 #include <sstream>
 #include <map>
+#include <algorithm>
 #include <boost/tokenizer.hpp>
 #include <boost/thread/thread.hpp>
 

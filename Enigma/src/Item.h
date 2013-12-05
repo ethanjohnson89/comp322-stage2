@@ -1,6 +1,7 @@
 #ifndef __ITEM_H
 #define __ITEM_H
 
+#include <algorithm>
 #include <string>
 using std::string;
 
@@ -28,14 +29,20 @@ public:
 	//comparator for usage in STL map template
 	bool operator<( const Item& other) const
     {
-		if(name < other.name)
+		string myName_lower = name, otherName_lower = other.name;
+		std::transform(myName_lower.begin(), myName_lower.end(), myName_lower.begin(), ::tolower);
+		std::transform(otherName_lower.begin(), otherName_lower.end(), otherName_lower.begin(), ::tolower);
+		if(myName_lower < otherName_lower)
 			return true;
 		return false;
     }
 
 	bool operator==(const Item& other) const
 	{
-		if(name == other.name)
+		string myName_lower = name, otherName_lower = other.name;
+		std::transform(myName_lower.begin(), myName_lower.end(), myName_lower.begin(), ::tolower);
+		std::transform(otherName_lower.begin(), otherName_lower.end(), otherName_lower.begin(), ::tolower);
+		if(myName_lower == otherName_lower)
 			return true;
 		return false;
 	}
