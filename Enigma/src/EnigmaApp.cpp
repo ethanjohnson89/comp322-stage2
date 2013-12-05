@@ -31,7 +31,9 @@ public:
 };
 
 void EnigmaApp::prepareSettings( Settings *settings ){
-    settings->setWindowSize( WINDOW_WIDTH, WINDOW_HEIGHT );
+	Window::Format fmt; fmt.setTitle("Enigma Text-Adventure Engine V1.0");
+	fmt.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	settings->prepareWindow(fmt);
 }
 
 
